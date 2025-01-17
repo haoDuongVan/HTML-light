@@ -10,7 +10,8 @@ class Controller {
             // $view = $viewPath;
             require_once $viewPath;
         } else {
-            die("View không tồn tại!");
+            
+            die("View không tồn tại đường dẫn: " . realpath($viewPath));
         }
     }
     

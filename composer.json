@@ -1,0 +1,21 @@
+{
+    "name": "haodu/restaurant",
+    "description": "Hide database info using Dotenv",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Haodu\\Restaurant\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "haoDuongVan",
+            "email": "duonghao17898@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

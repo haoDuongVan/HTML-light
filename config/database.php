@@ -1,13 +1,8 @@
 <?php
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'restaurant');
+return [
+    'db_host' => $_ENV['DB_HOST'],
+    'db_name' => $_ENV['DB_NAME'],
+    'db_user' => $_ENV['DB_USER'],
+    'db_pass' => $_ENV['DB_PASS'],
+];
 ?>
-
-CREATE TABLE menu (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    price DECIMAL(10, 2) NOT NULL
-);

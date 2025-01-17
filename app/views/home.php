@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Delizus - Restaurant  Template</title>
+    <title><?= $data['settings'][1]['value'][$data['lang']]; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Delizus is the most complete restaurantwebsite template">
     <meta name="keywords" content="restaurant,cafe,event.multipurpose,onepage,responsive,minimal,bootstrap,theme">
@@ -51,7 +51,6 @@
 <body id="homepage">
 
     <div id="wrapper">
-
         <!-- header begin -->
         <header>
             <div class="container">
@@ -73,12 +72,16 @@
                         <!-- mainmenu begin -->
                         <nav>
                             <ul id="mainmenu">
-                                <li><a href="<?= BASE_URL; ?>/">Home</a></li>
-                                <li><a href="<?= BASE_URL; ?>/menu">Menu</a></li>
-                                <li><a href="<?= BASE_URL; ?>/book">Book</a></li>
-                                <li><a href="<?= BASE_URL; ?>/contact">Contact</a></li>
+                                <?php foreach ($data['navigations'] as $navigation): ?> 
+                                    <li>
+                                        <a href="<?= BASE_URL . $navigation['url']; ?>">
+                                            <?= $navigation['title'][$data['lang']]; // Hiển thị tên bằng tiếng Việt ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </nav>
+                        <!-- mainmenu close -->
 
                     </div>
                     <!-- mainmenu close -->
@@ -95,102 +98,53 @@
             <section id="section-slider" class="fullwidthbanner-container" aria-label="section-slider">
                 <div id="revolution-slider">
                     <ul>
-                        <li data-transition="fade" data-slotamount="10" data-masterspeed="default" data-thumb="">
-                            <!--  BACKGROUND IMAGE -->
-                            <img src="<?= BASE_URL; ?>/public/images-slider/wide1.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" />
+                        <?php foreach ($data['sliders'] as $slider): ?>
+                            <li data-transition="fade" data-slotamount="10" data-masterspeed="default" data-thumb="">
+                                <!--  BACKGROUND IMAGE -->
+                                <img src="<?= BASE_URL . $slider['image']; ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" />
 
-                            <div class="tp-caption very-big-white"
-                                data-x="center"
-                                data-y="220"
-                                data-width="none"
-                                data-height="none"
-                                data-whitespace="nowrap"
-                                data-transform_in="x:50px;opacity:0;s:1000;e:Power3.easeOut;"
-                                data-transform_out="opacity:0;x:-10;px;s:800;e:Power3.easeInOut;"
-                                data-start="700"
-                                data-splitin="none"
-                                data-splitout="none"
-                                data-responsive_offset="on">
-                                ĐẶT LỊCH HẸN
-                            </div>
+                                <div class="tp-caption very-big-white"
+                                    data-x="center"
+                                    data-y="220"
+                                    data-width="none"
+                                    data-height="none"
+                                    data-whitespace="nowrap"
+                                    data-transform_in="x:50px;opacity:0;s:1000;e:Power3.easeOut;"
+                                    data-transform_out="opacity:0;x:-10;px;s:800;e:Power3.easeInOut;"
+                                    data-start="700"
+                                    data-splitin="none"
+                                    data-splitout="none"
+                                    data-responsive_offset="on">
+                                    <?= $slider['title'][$data['lang']]; ?>
+                                </div>
 
-                            <div class="tp-caption text-center"
-                                data-x="center"
-                                data-y="300"
-                                data-width="none"
-                                data-height="none"
-                                data-whitespace="nowrap"
-                                data-transform_in="y:100px;opacity:0;s:500;e:Power3.easeOut;"
-                                data-transform_out="opacity:0;x:-10;s:800;e:Power3.easeInOut;"
-                                data-start="1100">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do<br>
-                                eiusmod tempor incididunt ut labore et dolore<br>
-                                magna aliqua. Ut enim ad minim
-                            </div>
+                                <div class="tp-caption text-center"
+                                    data-x="center"
+                                    data-y="300"
+                                    data-width="none"
+                                    data-height="none"
+                                    data-whitespace="nowrap"
+                                    data-transform_in="y:100px;opacity:0;s:500;e:Power3.easeOut;"
+                                    data-transform_out="opacity:0;x:-10;s:800;e:Power3.easeInOut;"
+                                    data-start="1100">
+                                    <?= $slider['description'][$data['lang']]; ?>
+                                </div>
 
-                            <div class="tp-caption"
-                                data-x="center"
-                                data-y="410"
-                                data-width="none"
-                                data-height="none"
-                                data-whitespace="nowrap"
-                                data-transform_in="y:100px;opacity:0;s:500;e:Power3.easeOut;"
-                                data-transform_out="opacity:0;x:-10;s:800;e:Power3.easeInOut;"
-                                data-start="1200">
-                                <a href="#" class="btn-slider rounded">Đặt lịch</a>&nbsp;&nbsp;
-								<a href="#" class="btn-solid rounded">Xem Menu</a>
-                            </div>
-                        </li>
-
-                        <li data-transition="fade" data-slotamount="10" data-masterspeed="default" data-thumb="">
-                            <!--  BACKGROUND IMAGE -->
-                            <img src="<?= BASE_URL; ?>/public/images-slider/wide2.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" />
-
-                            <div class="tp-caption very-big-white"
-                                data-x="center"
-                                data-y="220"
-                                data-width="none"
-                                data-height="none"
-                                data-whitespace="nowrap"
-                                data-transform_in="x:50px;opacity:0;s:1000;e:Power3.easeOut;"
-                                data-transform_out="opacity:0;x:-10;px;s:800;e:Power3.easeInOut;"
-                                data-start="700"
-                                data-splitin="none"
-                                data-splitout="none"
-                                data-responsive_offset="on">
-                                KHÔNG GIAN RỘNG RÃI THOẢI MÁI
-                            </div>
-
-                            <div class="tp-caption text-center"
-                                data-x="center"
-                                data-y="300"
-                                data-width="none"
-                                data-height="none"
-                                data-whitespace="nowrap"
-                                data-transform_in="y:100px;opacity:0;s:500;e:Power3.easeOut;"
-                                data-transform_out="opacity:0;x:-10;s:800;e:Power3.easeInOut;"
-                                data-start="1100">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do<br>
-                                eiusmod tempor incididunt ut labore et dolore<br>
-                                magna aliqua. Ut enim ad minim
-                            </div>
-
-                            <div class="tp-caption"
-                                data-x="center"
-                                data-y="410"
-                                data-width="none"
-                                data-height="none"
-                                data-whitespace="nowrap"
-                                data-transform_in="y:100px;opacity:0;s:500;e:Power3.easeOut;"
-                                data-transform_out="opacity:0;x:-10;s:800;e:Power3.easeInOut;"
-                                data-start="1200">
-                                <a href="book.html" class="btn-slider rounded">Đặt lịch</a>&nbsp;&nbsp;
-								<a href="menu.html" class="btn-solid rounded">Xem Menu</a>
-                            </div>
-                        </li>
-
-
-
+                                <div class="tp-caption"
+                                    data-x="center"
+                                    data-y="410"
+                                    data-width="none"
+                                    data-height="none"
+                                    data-whitespace="nowrap"
+                                    data-transform_in="y:100px;opacity:0;s:500;e:Power3.easeOut;"
+                                    data-transform_out="opacity:0;x:-10;s:800;e:Power3.easeInOut;"
+                                    data-start="1200">
+                                    <?php foreach ($slider['buttons'] as $button): ?>
+                                        <a href="<?= BASE_URL . $button['url']; ?>" class="btn-slider rounded"><?= $button['text'][$data['lang']]; ?></a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </section>
@@ -201,69 +155,39 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <h2>Những món nhất định phải thử<span class="teaser">Bếp trưởng tự hào</span><span class="small-border center"></span></h2>
+                            <?php 
+                            $featuresHeading = '';
+                            $featuresSubheading = '';
+
+                            foreach ($data['sectionContents'] as $content) {
+                                if ($content['section_key'] === 'features_heading') {
+                                    $featuresHeading = $content['content'][$data['lang']] ?? 'Không có tiêu đề';
+                                }
+                                if ($content['section_key'] === 'features_subheading') {
+                                    $featuresSubheading = $content['content'][$data['lang']] ?? 'Không có phụ đề';
+                                }
+                            }
+                            ?>
+                                <h2><?= $featuresHeading; ?><span class="teaser"><?= $featuresSubheading; ?></span><span class="small-border center"></span></h2>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 text-center wow fadeInUp">
-                            <div class="menu-item">
-                                <figure class="pic-hover hover-scale mb10">
-                                    <span class="center-xy">
-                                        <a class="image-popup" href="images/menu/thumbs/1.jpg"></a>
-                                    </span>
-                                    <span class="bg-overlay"></span>
-                                    <span class="border-overlay"></span>
-                                    <img src="<?= BASE_URL; ?>/public/images/menu/thumbs/1.jpg" class="img-responsive" alt="">
-                                </figure>
+                            <?php foreach ($data['menuByCategory']['special'] as $item): ?>
+                                <div class="col-md-3 col-sm-6 text-center wow fadeInUp" data-wow-delay="<?= $index * 0.3 ?>s">
+                                    <div class="menu-item">
+                                        <figure class="pic-hover hover-scale mb10">
+                                            <span class="center-xy">
+                                                <a class="image-popup" href="<?= BASE_URL . $item['image']; ?>"></a>
+                                            </span>
+                                            <span class="bg-overlay"></span>
+                                            <span class="border-overlay"></span>
+                                            <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                        </figure>
 
-                                <h3>Roasted Chicken</h3>
-                                <span class="id-color">55 円</span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 text-center wow fadeInUp" data-wow-delay=".3s">
-                            <div class="menu-item">
-                                <figure class="pic-hover hover-scale mb10">
-                                    <span class="center-xy">
-                                        <a class="image-popup" href="images/menu/thumbs/2.jpg"></a>
-                                    </span>
-                                    <span class="bg-overlay"></span>
-                                    <span class="border-overlay"></span>
-                                    <img src="<?= BASE_URL; ?>/public/images/menu/thumbs/2.jpg" class="img-responsive" alt="">
-                                </figure>
-                                <h3>Baked Crab Cheese</h3>
-                                <span class="id-color">66 円</span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 text-center wow fadeInUp" data-wow-delay=".6s">
-                            <div class="menu-item">
-                                <figure class="pic-hover hover-scale mb10">
-                                    <span class="center-xy">
-                                        <a class="image-popup" href="images/menu/thumbs/3.jpg"></a>
-                                    </span>
-                                    <span class="bg-overlay"></span>
-                                    <span class="border-overlay"></span>
-                                    <img src="<?= BASE_URL; ?>/public/images/menu/thumbs/3.jpg" class="img-responsive" alt="">
-                                </figure>
-                                <h3>Foie Gras</h3>
-                                <span class="id-color">99 円</span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 text-center wow fadeInUp" data-wow-delay=".9s">
-                            <div class="menu-item">
-                                <figure class="pic-hover hover-scale mb10">
-                                    <span class="center-xy">
-                                        <a class="image-popup" href="images/menu/thumbs/4.jpg"></a>
-                                    </span>
-                                    <span class="bg-overlay"></span>
-                                    <span class="border-overlay"></span>
-                                    <img src="<?= BASE_URL; ?>/public/images/menu/thumbs/4.jpg" class="img-responsive" alt="">
-                                </figure>
-                                <h3>Chicken Satay</h3>
-                                <span class="id-color">56 円</span>
-                            </div>
-                        </div>
+                                        <h3><?= $item['name'][$data['lang']]; ?></h3>
+                                        <span class="id-color"><?= $item['price']; ?> 円</span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                     </div>
                 </div>
             </section>
@@ -272,96 +196,51 @@
             <section id="section-services-tab" aria-label="section-services-tab">
                 <div class="container">
                     <div class="col-md-12 text-center">
-                        <h2>Menu của Quán<span class="teaser">Ngon  &amp;  Bổ &amp;  Rẻ </span><span class="small-border center"></span></h2>
+                        <?php 
+                        $menuHeading = 'menu_heading';
+                        $menuSubheading = 'menu_subheading';
+
+                        foreach ($data['sectionContents'] as $content) {
+                            if ($content['section_key'] === 'menu_heading') {
+                                $menuHeading = $content['content'][$data['lang']] ?? 'Không có tiêu đề';
+                            }
+                            if ($content['section_key'] === 'menu_subheading') {
+                                $menuSubheading = $content['content'][$data['lang']] ?? 'Không có phụ đề';
+                            }
+                        }
+                        ?>
+                        <h2><?= $menuHeading; ?><span class="teaser"><?= $menuSubheading; ?></span><span class="small-border center"></span></h2>
                     </div>
 
                     <div class="col-md-12 mb60">
                         <div class="de_tab tab_style_2">
                             <ul class="de_nav">
-                                <li class="active" data-link="#section-services-tab"><span>Món chính</span><div class="v-border"></div>
-                                </li>
-                                <li data-link="#section-services-tab"><span>Đồ ăn kèm</span><div class="v-border"></div>
-                                </li>
-                                <li data-link="#section-services-tab"><span>Đồ uống</span><div class="v-border"></div>
+                                <?php $index = 0; // Biến đếm ?>
+                                <?php foreach ($data['menuCategories'] as $category): ?>
+                                    <li class="<?= $index === 0 ? 'active' : ''; ?>" data-link="#section-services-tab">
+                                        <span><?= $category['name'][$data['lang']]; ?></span><div class="v-border"></div>
+                                    </li>
+                                    <?php $index++; // Tăng biến đếm ?>
+                                <?php endforeach; ?>
                             </ul>
 
                             <div class="de_tab_content">
 
                                 <div id="tab1" class="tab_single_content">
                                     <div class="row">
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/1.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Chicken Crispy Roll</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">66 円</div>
+                                        <?php foreach ($data['menuByCategory']['main'] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$data['lang']]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?>  円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$data['lang']]; ?></div>
                                                 </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                                             </div>
-                                        </div>
-
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/2.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Cheese Shrimp Roll</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">42 円</div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/3.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Baked Crab Cheese</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">66 円</div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/4.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Crispy Squid</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">54 円</div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/5.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Foie Gras</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">99 円</div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/6.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Roasted Chicken</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">55 円</div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
+                                        <?php endforeach; ?>
 
                                         <div class="clearfix"></div>
                                     </div>
@@ -369,79 +248,19 @@
 
                                 <div id="tab2" class="tab_single_content">
                                     <div class="row">
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/1.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Chicken Soup</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">8< 円/div>
+                                        <?php foreach ($data['menuByCategory']['starter'] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$data['lang']]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?>  円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$data['lang']]; ?></div>
                                                 </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                                             </div>
-                                        </div>
-
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/2.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Caprese Salad</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">9< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/3.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Polpette</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">8< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/4.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Waffle</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">9< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/5.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Caprino</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">8< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/6.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Calamary</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">10 円</div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
+                                        <?php endforeach; ?>
 
                                         <div class="clearfix"></div>
                                     </div>
@@ -452,79 +271,19 @@
 
                                 <div id="tab3" class="tab_single_content">
                                     <div class="row">
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/1.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Limeade</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">5< 円/div>
+                                        <?php foreach ($data['menuByCategory']['drink'] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$data['lang']]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?>  円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$data['lang']]; ?></div>
                                                 </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
                                             </div>
-                                        </div>
-
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/2.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Iced Tea</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">3< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/3.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Milk Shake</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">5< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/4.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Orange Juice</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">3< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/5.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Hot Tea</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">3< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/6.jpg" class="img-responsive" alt="">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1">Coffee</div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3">3< 円/div>
-                                                </div>
-                                                <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                            </div>
-                                        </div>
-
+                                        <?php endforeach; ?>
 
                                         <div class="clearfix"></div>
                                     </div>
@@ -545,41 +304,55 @@
                 <div class="container">
                     <div class="col-md-6 col-md-offset-3">
                         <div data-bgcolor="#111111" class="padding60 text-center text-light mt-50 mb-50 shadow-soft wow fadeInUp">
-                            <h2>Lên lịch hẹn<span class="teaser center">Đặt bàn</span><span class="small-border center"></span></h2>
+                            <?php 
+                            $formHeading = 'form_heading';
+                            $formSubheading = 'form_subheading';
+
+                            foreach ($data['sectionContents'] as $content) {
+                                if ($content['section_key'] === 'form_heading') {
+                                    $formHeading = $content['content'][$data['lang']] ?? 'Không có tiêu đề';
+                                }
+                                if ($content['section_key'] === 'form_subheading') {
+                                    $formSubheading = $content['content'][$data['lang']] ?? 'Không có phụ đề';
+                                }
+                            }
+                            ?>
+                            <h2><?= $formHeading; ?><span class="teaser center"><?= $formSubheading; ?></span><span class="small-border center"></span></h2>
 
                             <div class="row">
-                                <form name="contactForm" id='contact_form' class="form-dark" method="post" action='reservation.php'>
+                                <form name="contactForm" id="contact_form" class="form-dark" method="post" action="reservation.php">
                                     <div class="col-md-6 mb10">
-                                        <input type='text' name='date' id='date' class="form-control" placeholder="Ngày">
+                                        <input type="text" name="date" id="date" class="form-control" placeholder="<?= $data['placeholders']['date']['placeholder']; ?>">
                                     </div>
                                     <div class="col-md-6 mb10">
-                                        <input type='text' name='time' id='time' class="form-control" placeholder="Thời gian">
+                                        <input type="text" name="time" id="time" class="form-control" placeholder="<?= $data['placeholders']['time']['placeholder']; ?>">
                                     </div>
                                     <div class="col-md-6 mb10">
-                                        <input type='text' name='table' id='table' class="form-control" placeholder="Số bàn">
+                                        <input type="text" name="table" id="table" class="form-control" placeholder="<?= $data['placeholders']['table']['placeholder']; ?>">
                                     </div>
                                     <div class="col-md-6 mb10">
-                                        <input type='text' name='person' id='person' class="form-control" placeholder="Số người">
+                                        <input type="text" name="person" id="person" class="form-control" placeholder="<?= $data['placeholders']['person']['placeholder']; ?>">
                                     </div>
                                     <div class="col-md-6 mb10">
-                                        <input type='text' name='name' id='name' class="form-control" placeholder="Tên">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="<?= $data['placeholders']['name']['placeholder']; ?>">
                                     </div>
                                     <div class="col-md-6 mb10">
-                                        <input type='text' name='email' id='email' class="form-control" placeholder="Email">
+                                        <input type="text" name="email" id="email" class="form-control" placeholder="<?= $data['placeholders']['email']['placeholder']; ?>">
                                     </div>
                                     <div class="col-md-12 mb10">
-                                        <textarea name='message' id='message' class="form-control" placeholder="Lời nhắn đến quán"></textarea>
+                                        <textarea name="message" id="message" class="form-control" placeholder="<?= $data['placeholders']['message']['placeholder']; ?>"></textarea>
                                     </div>
 
                                     <div class="col-md-12 text-center">
-                                        <div id='submit'>
-                                            <input type='submit' id='send_message' value='Đặt lịch hẹn' class="btn-solid rounded">
+                                        <div id="submit">
+                                            <input type="submit" id="send_message" value="<?= $data['placeholders']['send_message']['placeholder']; ?>" class="btn-solid rounded">
                                         </div>
-                                        <div id='mail_success' class='success'>Tin nhắn đã được gửi thành công.</div>
-                                        <div id='mail_fail' class='error'>Xin lỗi, đã có lỗi xảy ra trong quán trình gửi tin nhắn.</div>
+                                        <div id="mail_success" class="success"><?= $data['placeholders']['form']['success_message']; ?></div>
+                                        <div id="mail_fail" class="error"><?= $data['placeholders']['form']['error_message']; ?></div>
                                     </div>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -694,7 +467,7 @@
             var nowTemp = new Date();
             var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(),
 				nowTemp.getDate(), 0, 0, 0, 0);
-            var checkin = (' 円#date').datepicker({
+            var checkin = ('#date').datepicker({
                 onRender: function (date) {
                     return date.valueOf() < now.valueOf() ?
 						'disabled' : '';

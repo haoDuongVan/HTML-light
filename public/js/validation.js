@@ -10,7 +10,8 @@
             var email = $('#email').val();
 			var phone = $('#phone').val();
             var message = $('#message').val();
-			
+			var table = $('#table').val();
+            
 			$('#name,#email,#phone,#message').click(function(){
 				$(this).removeClass("error_input");
 			});
@@ -33,6 +34,12 @@
                 $('#phone').addClass("error_input");
             }else{
                 $('#phone').removeClass("error_input");
+            }
+            if (table.length === 0) {
+                error = true;
+                $('#table').addClass("error_input");
+            } else {
+                $('#table').removeClass("error_input");
             }
             if(message.length == 0){
                 var error = true;
