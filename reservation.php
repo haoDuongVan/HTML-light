@@ -1,5 +1,5 @@
 <?php
-$subject = 'You Got Message'; // Subject of your email
+$subject = 'Đơn đặt bàn mới'; // Subject of your email
 $to = 'info@designesia.com';  //Recipient's E-mail
 $emailTo = $_REQUEST['email'];
 

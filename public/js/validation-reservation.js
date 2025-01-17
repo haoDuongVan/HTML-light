@@ -13,8 +13,9 @@
 			var date = $('#date').val();
             var time = $('#time').val();
 			var person = $('#person').val();
+            var table = $('#table').val();
 			
-			$('#name,#email,#phone,#message,#date,#time,#person').click(function(){
+			$('#name,#email,#phone,#message,#date,#time,#person,#table').click(function(){
 				$(this).removeClass("error_input");
 			});
             

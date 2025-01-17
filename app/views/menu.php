@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Delizus - Restaurant and Cafe Website Template</title>
+<meta charset="utf-8">
+    <title>Delizus - Restaurant  Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Delizus is the most complete restaurant and cafe website template">
+    <meta name="description" content="Delizus is the most complete restaurantwebsite template">
     <meta name="keywords" content="restaurant,cafe,event.multipurpose,onepage,responsive,minimal,bootstrap,theme">
     <meta name="author" content="">
 
 
     <!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
+	<script src="<?= BASE_URL; ?>/public/js/html5shiv.js"></script>
 	<![endif]-->
 
 
     <!-- CSS Files
     ================================================== -->
-    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="css/animate.css" type="text/css">
-    <link rel="stylesheet" href="css/plugin.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.theme.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.transitions.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css"><!-- custom background -->
-    <link rel="stylesheet" href="css/bg.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/animate.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/plugin.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/owl.theme.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/owl.transitions.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/style.css" type="text/css"><!-- custom background -->
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/bg.css" type="text/css">
 
     <!-- color scheme -->
-    <link rel="stylesheet" href="css/color.css" type="text/css" id="colors">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/color.css" type="text/css" id="colors">
 
     <!-- revolution slider custom css -->
-    <link rel="stylesheet" href="css/rev-settings.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/rev-settings.css" type="text/css">
 
     <!-- load fonts -->
-    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css" type="text/css">
-    <link rel="stylesheet" href="fonts/elegant_font/HTML_CSS/style.css" type="text/css">
-    <link rel="stylesheet" href="fonts/elegant_font/HTML_CSS/lte-ie7.js" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/font-awesome/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/elegant_font/HTML_CSS/style.css" type="text/css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/elegant_font/HTML_CSS/lte-ie7.js" type="text/css">
 </head>
 <body class="page-menu">
 
@@ -48,9 +48,9 @@
                     <div class="col-md-12">
                         <!-- logo begin -->
                         <div id="logo">
-                            <a href="index.html">
-                                <img class="logo" src="images/logo.png" alt="">
-                                <img class="logo-2" src="images/logo-2.png" alt="">
+                            <a href="<?= BASE_URL; ?>/">
+                                <img class="logo" src="<?= BASE_URL; ?>/public/images/logo.png" alt="">
+                                <img class="logo-2" src="<?= BASE_URL; ?>/public/images/logo-2.png" alt="">
                             </a>
                         </div>
                         <!-- logo close -->
@@ -62,10 +62,10 @@
                         <!-- mainmenu begin -->
                         <nav>
                             <ul id="mainmenu">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="menu.html">Menu</a></li>
-                                <li><a href="book.html">Book</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="<?= BASE_URL; ?>/">Home</a></li>
+                                <li><a href="<?= BASE_URL; ?>/menu">Menu</a></li>
+                                <li><a href="<?= BASE_URL; ?>/book">Book</a></li>
+                                <li><a href="<?= BASE_URL; ?>/contact">Contact</a></li>
                             </ul>
                         </nav>
 
@@ -110,7 +110,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/main/1.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/1.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Chicken Crispy Roll</div>
                                             <div class="c2"></div>
@@ -123,7 +123,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/main/2.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/2.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Cheese Shrimp Roll</div>
                                             <div class="c2"></div>
@@ -135,7 +135,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/main/3.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/3.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Baked Crab Cheese</div>
                                             <div class="c2"></div>
@@ -147,7 +147,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/main/4.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/4.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Crispy Squid</div>
                                             <div class="c2"></div>
@@ -159,7 +159,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/main/5.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/5.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Foie Gras</div>
                                             <div class="c2"></div>
@@ -171,7 +171,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/main/6.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/6.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Roasted Chicken</div>
                                             <div class="c2"></div>
@@ -211,7 +211,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/starter/1.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/1.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Chicken Soup</div>
                                             <div class="c2"></div>
@@ -224,7 +224,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/starter/2.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/2.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Caprese Salad</div>
                                             <div class="c2"></div>
@@ -236,7 +236,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/starter/3.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/3.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Polpette</div>
                                             <div class="c2"></div>
@@ -248,7 +248,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/starter/4.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/4.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Waffle</div>
                                             <div class="c2"></div>
@@ -260,7 +260,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/starter/5.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/5.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Caprino</div>
                                             <div class="c2"></div>
@@ -272,7 +272,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/starter/6.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/6.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Calamary</div>
                                             <div class="c2"></div>
@@ -311,7 +311,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/drink/1.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/1.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Limeade</div>
                                             <div class="c2"></div>
@@ -324,7 +324,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/drink/2.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/2.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Iced Tea</div>
                                             <div class="c2"></div>
@@ -336,7 +336,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/drink/3.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/3.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Milk Shake</div>
                                             <div class="c2"></div>
@@ -348,7 +348,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/drink/4.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/4.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Orange Juice</div>
                                             <div class="c2"></div>
@@ -360,7 +360,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/drink/5.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/5.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Hot Tea</div>
                                             <div class="c2"></div>
@@ -372,7 +372,7 @@
 
                                 <div class="col-md-6 mb30">
                                     <div class="post-menu">
-                                        <img src="images/menu/thumbs-small/drink/6.jpg" class="img-responsive" alt="">
+                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/6.jpg" class="img-responsive" alt="">
                                         <div class="sub-item-service meta">
                                             <div class="c1">Coffee</div>
                                             <div class="c2"></div>
@@ -403,10 +403,10 @@
                 <div class="row">
                     <div class="container">
                         <div class="col-md-4">
-                            &copy; Copyright 2017 - Delizus by Designesia                     
+                        &copy; Copyright 2025 - Delizus by AutoTeam                     
                         </div>
                         <div class="col-md-4 text-center">
-                            <img class="logo" src="images/logo.png" alt="">
+                            <img class="logo" src="<?= BASE_URL; ?>/public/images/logo.png" alt="">
                         </div>
                         <div class="col-md-4 text-right">
                             <div class="social-icons">
@@ -424,7 +424,7 @@
         </footer>
         <!-- footer close -->
 
-        <a href="#" id="back-to-top"></a>
+        <a href="<?= BASE_URL; ?>/" id="back-to-top"></a>
         <div id="preloader">
             <div class="preloader1"></div>
         </div>
@@ -432,34 +432,34 @@
 
     <!-- Javascript Files
     ================================================== -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/easing.js"></script>
-    <script src="js/jquery.flexslider-min.js"></script>
-    <script src="js/jquery.scrollto.js"></script>
-    <script src="js/owl.carousel.js"></script>
-    <script src="js/jquery.countTo.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/video.resize.js"></script>
-    <script src="js/validation.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/enquire.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/designesia.js"></script><!-- RS5.0 Core JS Files -->
-    <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
-    <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
+    <script src="<?= BASE_URL; ?>/public/js/jquery.min.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/bootstrap.min.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/jquery.isotope.min.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/easing.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/jquery.flexslider-min.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/jquery.scrollto.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/owl.carousel.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/jquery.countTo.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/classie.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/video.resize.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/validation.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/wow.min.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/jquery.magnific-popup.min.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/enquire.min.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/jquery.stellar.min.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/designesia.js"></script><!-- RS5.0 Core JS Files -->
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
 
     <!-- RS5.0 Extensions Files -->
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript" src="revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
 
 </body>
 </html>
