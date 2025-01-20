@@ -26,8 +26,8 @@ if (!isset($_SESSION['lang'])) {
 }
 
 // Kiểm tra nếu có thay đổi ngôn ngữ qua URL hoặc form
-if (isset($_GET['lang']) && in_array($_GET['lang'], ['vi', 'en', 'jp'])) {
-    $_SESSION['lang'] = $_GET['lang'];
+if (isset($_GET['lang']) && in_array(trim($_GET['lang']), ['vi', 'en', 'jp'])) {
+    $_SESSION['lang'] = trim($_GET['lang']);;
 
     // Xóa query string chứa 'lang' và chuyển hướng
     $redirectUrl = strtok($_SERVER['REQUEST_URI'], '?');
@@ -43,8 +43,6 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], ['vi', 'en', 'jp'])) {
     exit();
 }
 
-// Gán ngôn ngữ hiện tại vào biến toàn cục
-$lang = $_SESSION['lang'];
 
 // Nạp các file hệ thống cần thiết
 require_once __DIR__ . '/core/AutoLoad.php';

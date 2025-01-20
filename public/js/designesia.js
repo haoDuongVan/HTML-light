@@ -315,9 +315,11 @@ new WOW().init();
 			opt.on("click", function() {
 				dd.hide();
 				var txt = $(this).text();
+				var imgSrc = $(this).find('img').attr('src');
+				var lang = $(this).data('lang');
 				opt.removeClass("active");
 				$(this).addClass("active");
-				btn.text(txt);
+				btn.html('<img src="' + imgSrc + '" alt="' + txt + '" class="flag-icon">' + txt);
 			});
 	}
 	
@@ -423,13 +425,20 @@ new WOW().init();
 				if (mq.matches) {
 					var distanceY = window.pageYOffset || document.documentElement.scrollTop,
 					shrinkOn = 55,
-					header = document.querySelector("header");
+					header = document.querySelector("header"),
+					info = document.querySelector(".info");
 					jQuery("header").css("height","70px");
 				if (distanceY > shrinkOn) {
 					classie.add(header,"smaller");
+					if (info) {
+						$(info).css("display", "none");
+					}
 				} else {
 					if (classie.has(header,"smaller")) {
 						classie.remove(header,"smaller");
+					}
+					if (info) {
+						$(info).css("display", "block");
 					}
 
 				}

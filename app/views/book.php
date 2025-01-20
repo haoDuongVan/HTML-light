@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-    <title>Delizus - Restaurant  Template</title>
+    <?php $lang = trim($data['lang']); ?>
+    <title><?= $data['settings'][1]['value'][$lang]; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Delizus is the most complete restaurantwebsite template">
     <meta name="keywords" content="restaurant,cafe,event.multipurpose,onepage,responsive,minimal,bootstrap,theme">
@@ -10,7 +11,7 @@
 
 
     <!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
+	<script src="<?= BASE_URL; ?>/public/js/html5shiv.js"></script>
 	<![endif]-->
 
 
@@ -64,10 +65,13 @@
                         <!-- mainmenu begin -->
                         <nav>
                             <ul id="mainmenu">
-                                <li><a href="<?= BASE_URL; ?>/">Home</a></li>
-                                <li><a href="<?= BASE_URL; ?>/menu">Menu</a></li>
-                                <li><a href="<?= BASE_URL; ?>/book">Book</a></li>
-                                <li><a href="<?= BASE_URL; ?>/contact">Contact</a></li>
+                                <?php foreach ($data['navigations'] as $navigation): ?> 
+                                    <li>
+                                        <a href="<?= BASE_URL . $navigation['url']; ?>">
+                                            <?= $navigation['title'][$lang]; // Hiển thị tên bằng tiếng Việt ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </nav>
 
@@ -84,8 +88,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Book</h1>
-                        <h2><span>Make a Reservation</span></h2>
+                        <?php 
+                        $formHeading = 'form_heading';
+                        $formSubheading = 'form_subheading';
+
+                        foreach ($data['sectionContents'] as $content) {
+                            if ($content['section_key'] === 'form_heading') {
+                                $formHeading = $content['content'][$lang] ?? 'Không có tiêu đề';
+                            }
+                            if ($content['section_key'] === 'form_subheading') {
+                                $formSubheading = $content['content'][$lang] ?? 'Không có phụ đề';
+                            }
+                        }
+                        ?>
+                        <h1><?= $formHeading; ?></h1>
+                        <h2><span><?= $formSubheading; ?></span></h2>
 
                     </div>
                 </div>
@@ -103,32 +120,35 @@
                             <div class="col-md-6">
                                 <div data-bgcolor="#111111" class="padding60 text-center text-light shadow-soft">
                                     <div class="row">
-                                        <form name="contactForm" id='contact_form' class="form-dark" method="post" action='reservation.php'>
-                                            <div class="col-md-4 mb10">
-                                                <input type='text' name='date' id='date' class="form-control" placeholder="Date">
-                                            </div>
-                                            <div class="col-md-4 mb10">
-                                                <input type='text' name='time' id='time' class="form-control" placeholder="Time">
-                                            </div>
-                                            <div class="col-md-4 mb10">
-                                                <input type='text' name='person' id='person' class="form-control" placeholder="Person">
+                                        <form name="contactForm" id="contact_form" class="form-dark" method="post" action="reservation.php">
+                                            <div class="col-md-6 mb10">
+                                                <input type="text" name="date" id="date" class="form-control" placeholder="<?= $data['placeholders']['date']['placeholder']; ?>">
                                             </div>
                                             <div class="col-md-6 mb10">
-                                                <input type='text' name='name' id='name' class="form-control" placeholder="Your Name">
+                                                <input type="text" name="time" id="time" class="form-control" placeholder="<?= $data['placeholders']['time']['placeholder']; ?>">
                                             </div>
                                             <div class="col-md-6 mb10">
-                                                <input type='text' name='email' id='email' class="form-control" placeholder="Your Email">
+                                                <input type="text" name="table" id="table" class="form-control" placeholder="<?= $data['placeholders']['table']['placeholder']; ?>">
+                                            </div>
+                                            <div class="col-md-6 mb10">
+                                                <input type="text" name="person" id="person" class="form-control" placeholder="<?= $data['placeholders']['person']['placeholder']; ?>">
+                                            </div>
+                                            <div class="col-md-6 mb10">
+                                                <input type="text" name="name" id="name" class="form-control" placeholder="<?= $data['placeholders']['name']['placeholder']; ?>">
+                                            </div>
+                                            <div class="col-md-6 mb10">
+                                                <input type="text" name="email" id="email" class="form-control" placeholder="<?= $data['placeholders']['email']['placeholder']; ?>">
                                             </div>
                                             <div class="col-md-12 mb10">
-                                                <textarea name='message' id='message' class="form-control" placeholder="Any Message?"></textarea>
+                                                <textarea name="message" id="message" class="form-control" placeholder="<?= $data['placeholders']['message']['placeholder']; ?>"></textarea>
                                             </div>
 
                                             <div class="col-md-12 text-center">
-                                                <div id='submit'>
-                                                    <input type='submit' id='send_message' value='Submit Form' class="btn-solid rounded">
+                                                <div id="submit">
+                                                    <input type="submit" id="send_message" value="<?= $data['placeholders']['send_message']['placeholder']; ?>" class="btn-solid rounded">
                                                 </div>
-                                                <div id='mail_success' class='success'>Your message has been sent successfully.</div>
-                                                <div id='mail_fail' class='error'>Sorry, error occured this time sending your message.</div>
+                                                <div id="mail_success" class="success"><?= $data['placeholders']['form']['success_message']; ?></div>
+                                                <div id="mail_fail" class="error"><?= $data['placeholders']['form']['error_message']; ?></div>
                                             </div>
                                         </form>
                                     </div>
@@ -138,16 +158,31 @@
                             <div class="col-md-6 text-center middle" data-bgcolor="#eee">
 
                                 <div class="padding60">
-                                    <h2>We're Open<span class="teaser">Everyday!</span></h2>
-                                    <p>
-                                        Monday - Friday<br>
-                                        <strong>08.00 - 21.00</strong>
-                                    </p>
+                                    <?php 
+                                    $openHeading = 'open_title';
+                                    $openSubheading = 'open_subtitle';
+                                    $weekdayHours = 'weekday_hours';
+                                    $weekendHours = 'weekend_hours';
+
+                                    foreach ($data['sectionContents'] as $content) {
+                                        if ($content['section_key'] === 'open_title') {
+                                            $openHeading = $content['content'][$lang] ?? 'Không có tiêu đề';
+                                        }
+                                        if ($content['section_key'] === 'open_subtitle') {
+                                            $openSubheading = $content['content'][$lang] ?? 'Không có phụ đề';
+                                        }
+                                        if ($content['section_key'] === 'weekday_hours') {
+                                            $weekdayHours = $content['content'][$lang] ?? 'Không có giờ làm việc';
+                                        }
+                                        if ($content['section_key'] === 'weekend_hours') {
+                                            $weekendHours = $content['content'][$lang] ?? 'Không có giờ làm việc';
+                                        }
+                                    }
+                                    ?>
+                                    <h2><?= $openHeading; ?><span class="teaser"><?= $openSubheading; ?></span></h2>
+                                    <p><?= $weekdayHours; ?></p>
                                     <span class="small-border"></span>
-                                    <p>
-                                        Saturday &amp Sunday<br>
-                                        <strong>10.00 - 23.00</strong>
-                                    </p>
+                                    <p><?= $weekendHours; ?></p>
                                 </div>
 
                             </div>
@@ -166,7 +201,7 @@
                 <div class="row">
                     <div class="container">
                         <div class="col-md-4">
-                        &copy; Copyright 2025 - Delizus by AutoTeam                     
+                            <?= $data['settings'][4]['value']['value']; ?>                  
                         </div>
                         <div class="col-md-4 text-center">
                             <img class="logo" src="<?= BASE_URL; ?>/public/images/logo.png" alt="">

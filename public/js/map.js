@@ -1,177 +1,66 @@
-                    // When the window has finished loading create our google map below
-                    google.maps.event.addDomListener(window, 'load', init);
+// Khi window đã tải xong, khởi tạo bản đồ
+window.addEventListener('load', init);
 
-                    function init() {
-                        // Basic options for a simple Google Map
-                        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-                        var myLatlng = new google.maps.LatLng(-6.373091, 106.835175);
+function init() {
+    var mapInitialized = false; // Biến kiểm tra trạng thái bản đồ đã được khởi tạo hay chưa
+    var map;
+    var mapElement = document.getElementById('map');
+    var navElement = document.querySelector('ul.de_nav');
 
-                        var mapOptions = {
-                            // How zoomed in you want the map to start at (always required)
-                            zoom: 12,
-                            disableDefaultUI: true,
-							scrollwheel: false, 
+    // Xử lý khi nhấn nút hiển thị bản đồ
+    document.querySelector('.cust-map-toggle').addEventListener('click', function () {
+        mapElement.style.display = 'block'; // Hiển thị phần tử bản đồ
+        navElement.style.display = 'none'; // Ẩn danh sách điều hướng
 
-                            // The latitude and longitude to center the map (always required)
+        // Chỉ khởi tạo bản đồ nếu chưa được khởi tạo trước đó
+        if (!mapInitialized) {
+            // Thiết lập bản đồ và vị trí ban đầu
+            var myLatlng = [35.6895, 139.6917]; // Thay tọa độ tại đây nếu cần
+            map = L.map('map').setView(myLatlng, 13); // 13 là mức zoom ban đầu
 
-                            center: myLatlng, // New York
+            // Gắn layer bản đồ OpenStreetMap
+            // Define base layers
+            var baseLayers = {
+                "OpenStreetMap Default": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    maxZoom: 19
+                }),
+                "Carto Light": L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+                    subdomains: 'abcd',
+                    maxZoom: 19
+                })
+            };
 
-                            // How you would like to style the map. 
-                            // This is where you would paste any style found on Snazzy Maps.
-                            styles: [
-    {
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#ff4400"
-            },
-            {
-                "saturation": -68
-            },
-            {
-                "lightness": -4
-            },
-            {
-                "gamma": 0.72
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels.icon"
-    },
-    {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "hue": "#0077ff"
-            },
-            {
-                "gamma": 3.1
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "stylers": [
-            {
-                "hue": "#00ccff"
-            },
-            {
-                "gamma": 0.44
-            },
-            {
-                "saturation": -33
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "stylers": [
-            {
-                "hue": "#44ff00"
-            },
-            {
-                "saturation": -23
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "hue": "#007fff"
-            },
-            {
-                "gamma": 0.77
-            },
-            {
-                "saturation": 65
-            },
-            {
-                "lightness": 99
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "gamma": 0.11
-            },
-            {
-                "weight": 5.6
-            },
-            {
-                "saturation": 99
-            },
-            {
-                "hue": "#0091ff"
-            },
-            {
-                "lightness": -86
-            }
-        ]
-    },
-    {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": -48
-            },
-            {
-                "hue": "#ff5e00"
-            },
-            {
-                "gamma": 1.2
-            },
-            {
-                "saturation": -23
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "saturation": -64
-            },
-            {
-                "hue": "#ff9100"
-            },
-            {
-                "lightness": 16
-            },
-            {
-                "gamma": 0.47
-            },
-            {
-                "weight": 2.7
-            }
-        ]
-    }
-]
-                        };
+            // Lựa chọn lauyer bản đồ
+            baseLayers["OpenStreetMap Default"].addTo(map);
 
-                        // Get the HTML DOM element that will contain your map 
-                        // We are using a div with id="map" seen below in the <body>
-                        var mapElement = document.getElementById('map');
+            // thêm control cho layer đã chọn
+            L.control.layers(baseLayers).addTo(map);
 
-                        // Create the Google Map using out element and options defined above
-                        var map = new google.maps.Map(mapElement, mapOptions);
-						
-                        var marker = new google.maps.Marker({
-                            position: myLatlng,
-                            map: map,
-							icon: 'images/map-marker.png',
-                            title: 'Lorem Ipsum'
-                        });
-						
-						
 
-                    }
+            // Thêm marker trên bản đồ
+            L.marker(myLatlng).addTo(map)
+                .bindPopup(`
+                    <b>Restaurant Name</b><br>
+                    123 Main Street, City.<br>
+                    <i>Phone: 123-456-7890</i>
+                    
+                `) // Popup khi nhấp vào marker
+                .openPopup(); // Tự động mở popup ngay sau khi khởi tạo
+
+            // Đánh dấu trạng thái bản đồ đã được khởi tạo
+            mapInitialized = true;
+        }
+    });
+
+    document.addEventListener('click', function(event) {
+        var isClickInsideMap = mapElement.contains(event.target);
+        var isClickInsideToggle = document.querySelector('.cust-map-toggle').contains(event.target);
+
+        if (!isClickInsideMap && !isClickInsideToggle) {
+            mapElement.style.display = 'none'; // Hide the map
+            navElement.style.display = 'block'; // Show the navElement
+        }
+    });
+}

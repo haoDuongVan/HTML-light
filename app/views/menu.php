@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-    <title>Delizus - Restaurant  Template</title>
+    <?php $lang = trim($data['lang']); ?>
+    <title><?= $data['settings'][1]['value'][$lang]; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Delizus is the most complete restaurantwebsite template">
     <meta name="keywords" content="restaurant,cafe,event.multipurpose,onepage,responsive,minimal,bootstrap,theme">
@@ -62,10 +63,13 @@
                         <!-- mainmenu begin -->
                         <nav>
                             <ul id="mainmenu">
-                                <li><a href="<?= BASE_URL; ?>/">Home</a></li>
-                                <li><a href="<?= BASE_URL; ?>/menu">Menu</a></li>
-                                <li><a href="<?= BASE_URL; ?>/book">Book</a></li>
-                                <li><a href="<?= BASE_URL; ?>/contact">Contact</a></li>
+                                <?php foreach ($data['navigations'] as $navigation): ?> 
+                                    <li>
+                                        <a href="<?= BASE_URL . $navigation['url']; ?>">
+                                            <?= $navigation['title'][$lang]; // Hiển thị tên bằng tiếng Việt ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </nav>
 
@@ -83,8 +87,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Our Menu</h1>
-                        <h2><span>Fresh &amp; Delicious</span></h2>
+                        <?php 
+                        $menuHeading = 'menu_heading';
+                        $menuSubheading = 'menu_subheading';
+
+                        foreach ($data['sectionContents'] as $content) {
+                            if ($content['section_key'] === 'menu_heading') {
+                                $menuHeading = $content['content'][$lang] ?? 'Không có tiêu đề';
+                            }
+                            if ($content['section_key'] === 'menu_subheading') {
+                                $menuSubheading = $content['content'][$lang] ?? 'Không có phụ đề';
+                            }
+                        }
+                        ?>
+                        <h1><?= $menuHeading; ?></h1>
+                        <h2><span><?= $menuSubheading; ?></span></h2>
                     </div>
                 </div>
             </div>
@@ -94,307 +111,49 @@
         <!-- content begin -->
         <div id="content" class="no-top no-bottom">
             <!-- section begin -->
-            <section id="sub-menu-1" class="side-bg">
-                <div class="col-md-3 image-container">
-                    <div class="background-image"></div>
-                </div>
+            <?php $divId = ['sub-menu-1', 'sub-menu-2', 'sub-menu-3']; ?>
+            <?php $categoris = ['main', 'starter', 'drink']; ?>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-4">
-
-                            <div class="text-center">
-                                <h2>Mains<span class="teaser">Fresh and delicious</span><span class="small-border center"></span></h2>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/1.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Chicken Crispy Roll</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$66</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/2.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Cheese Shrimp Roll</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$42</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/3.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Baked Crab Cheese</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$66</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/4.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Crispy Squid</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$54</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/5.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Foie Gras</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$99</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/main/6.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Roasted Chicken</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$55</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-
-                                <div class="clearfix"></div>
-                            </div>
-
-                        </div>
-
-
+            <?php for ($idx = 0; $idx < count($divId); $idx++): ?>
+                <section id=<?= $divId[$idx] ; ?> class="side-bg" data-bgcolor="<?= $idx % 2 === 1 ? '#f5f5f5' : ''; ?>">
+                    <div class="<?= $idx % 2 === 0 ? 'col-md-3 image-container' : 'col-md-3 col-md-offset-9 image-container pull-right'; ?>">
+                        <div class="background-image"></div>
                     </div>
-                </div>
-            </section>
-            <!-- section close -->
-
-            <!-- section begin -->
-            <section id="sub-menu-2" class="side-bg" data-bgcolor="#f5f5f5">
-                <div class="col-md-3 col-md-offset-9 image-container pull-right">
-                    <div class="background-image"></div>
-                </div>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8">
-
-                            <div class="text-center">
-                                <h2>Starter<span class="teaser">Fresh and delicious</span><span class="small-border center"></span></h2>
+    
+                    <div class="container">
+                        <div class="row">
+                            <div class="<?= $idx % 2 === 0 ? 'col-md-8 col-md-offset-4' : 'col-md-8'; ?>">
+                                <?php $category = $data['menuCategories'][$idx] ?>
+                                <div class="text-center">
+                                    <h2><?= $category['name'][$lang]; ?><span class="teaser">Fresh and delicious</span><span class="small-border center"></span></h2>
+                                </div>
+                                
+                                <div class="row">
+                                    <?php foreach ($data['menuByCategory'][$categoris[$idx]] as $item): ?>
+                                        <div class="col-md-6 mb30">
+                                            <div class="post-menu">
+                                                <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                                <div class="sub-item-service meta">
+                                                    <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                    <div class="c2"></div>
+                                                    <div class="c3"><?= $item['price']; ?>  円</div>
+                                                </div>
+                                                <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+    
+                                    <div class="clearfix"></div>
+                                </div>
+    
                             </div>
-
-
-                            <div class="row">
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/1.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Chicken Soup</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$8</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/2.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Caprese Salad</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$9</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/3.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Polpette</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$8</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/4.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Waffle</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$9</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/5.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Caprino</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$8</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/starter/6.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Calamary</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$10</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-
-                                <div class="clearfix"></div>
-                            </div>
-
+    
+    
                         </div>
-
-
                     </div>
-                </div>
-            </section>
-            <!-- section close -->
-
-            <!-- section begin -->
-            <section id="sub-menu-3" class="side-bg">
-                <div class="col-md-3 image-container">
-                    <div class="background-image"></div>
-                </div>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-4">
-
-                            <div class="text-center">
-                                <h2>Drinks<span class="teaser">Fresh and delicious</span><span class="small-border center"></span></h2>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/1.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Limeade</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$5</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/2.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Iced Tea</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$3</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/3.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Milk Shake</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$5</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/4.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Orange Juice</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$3</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/5.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Hot Tea</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$3</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mb30">
-                                    <div class="post-menu">
-                                        <img src="<?= BASE_URL; ?>/public/images/menu/thumbs-small/drink/6.jpg" class="img-responsive" alt="">
-                                        <div class="sub-item-service meta">
-                                            <div class="c1">Coffee</div>
-                                            <div class="c2"></div>
-                                            <div class="c3">$3</div>
-                                        </div>
-                                        <div class="service-text meta-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                                    </div>
-                                </div>
-
-
-                                <div class="clearfix"></div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </section>
-            <!-- section close -->
-
-
+                </section>
+                <!-- section close -->
+            <?php endfor; ?>
         </div>
 
         <!-- footer begin -->
@@ -403,7 +162,7 @@
                 <div class="row">
                     <div class="container">
                         <div class="col-md-4">
-                        &copy; Copyright 2025 - Delizus by AutoTeam                     
+                            <?= $data['settings'][4]['value']['value']; ?>                 
                         </div>
                         <div class="col-md-4 text-center">
                             <img class="logo" src="<?= BASE_URL; ?>/public/images/logo.png" alt="">

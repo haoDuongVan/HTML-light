@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?= $data['settings'][1]['value'][$data['lang']]; ?></title>
+    <?php $lang = trim($data['lang']); ?>    
+    <title><?= $data['settings'][1]['value'][$lang]; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Delizus is the most complete restaurantwebsite template">
     <meta name="keywords" content="restaurant,cafe,event.multipurpose,onepage,responsive,minimal,bootstrap,theme">
@@ -53,6 +54,59 @@
     <div id="wrapper">
         <!-- header begin -->
         <header>
+            <div class="info">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="col"><span class="id-color"><i class="fa fa-map-marker"></i></span>Collins Street West, Victoria 8007 Australia </div>
+                            <div class="col"><span class="id-color"><i class="fa fa-clock-o"></i></span>Monday - Friday 08:00-16:00</div>
+                            <div class="col"><span class="id-color"><i class="fa fa-phone"></i></span>1800.899.900</div>
+                            <div class="col">
+                                <div id="lang-selector" class="dropdown">
+                                    <?php
+                                    // Xác định ngôn ngữ hiện tại
+                                    $langConfig = [
+                                        'vi' => ['name' => 'Tiếng Việt', 'flag' => 'vi.png'],
+                                        'en' => ['name' => 'English', 'flag' => 'en.png'],
+                                        'jp' => ['name' => '日本語', 'flag' => 'jp.png'],
+                                    ];
+                                    $currentLang = $langConfig[$lang] ?? $langConfig['vi'];
+                                    ?>
+                                    <!-- Hiển thị ngôn ngữ hiện tại -->
+                                    <a href="#" class="btn-selector">
+                                        <img src="<?= BASE_URL; ?>/public/images/flags/<?= $currentLang['flag']; ?>" alt="<?= $currentLang['name']; ?> Flag" class="flag-icon">
+                                        <?= $currentLang['name']; ?>
+                                    </a>
+
+                                    <!-- Danh sách các ngôn ngữ -->
+                                    <ul>
+                                        <?php foreach ($langConfig as $code => $info): ?>
+                                            <li data-lang="<?= $code; ?>" class="<?= $lang === $code ? 'active' : ''; ?>">
+                                                <a href="?lang=<?= $code; ?>">
+                                                    <img src="<?= BASE_URL; ?>/public/images/flags/<?= $info['flag']; ?>" alt="<?= $info['name']; ?> Flag" class="flag-icon">
+                                                    <?= $info['name']; ?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <!-- social icons -->
+                            <div class="col social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-rss"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="#"><i class="fa fa-envelope-o"></i></a>
+                            </div>
+                            <!-- social icons close -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -75,7 +129,7 @@
                                 <?php foreach ($data['navigations'] as $navigation): ?> 
                                     <li>
                                         <a href="<?= BASE_URL . $navigation['url']; ?>">
-                                            <?= $navigation['title'][$data['lang']]; // Hiển thị tên bằng tiếng Việt ?>
+                                            <?= $navigation['title'][$lang]; // Hiển thị tên bằng tiếng Việt ?>
                                         </a>
                                     </li>
                                 <?php endforeach; ?>
@@ -115,7 +169,7 @@
                                     data-splitin="none"
                                     data-splitout="none"
                                     data-responsive_offset="on">
-                                    <?= $slider['title'][$data['lang']]; ?>
+                                    <?= $slider['title'][$lang]; ?>
                                 </div>
 
                                 <div class="tp-caption text-center"
@@ -127,7 +181,7 @@
                                     data-transform_in="y:100px;opacity:0;s:500;e:Power3.easeOut;"
                                     data-transform_out="opacity:0;x:-10;s:800;e:Power3.easeInOut;"
                                     data-start="1100">
-                                    <?= $slider['description'][$data['lang']]; ?>
+                                    <?= $slider['description'][$lang]; ?>
                                 </div>
 
                                 <div class="tp-caption"
@@ -140,7 +194,7 @@
                                     data-transform_out="opacity:0;x:-10;s:800;e:Power3.easeInOut;"
                                     data-start="1200">
                                     <?php foreach ($slider['buttons'] as $button): ?>
-                                        <a href="<?= BASE_URL . $button['url']; ?>" class="btn-slider rounded"><?= $button['text'][$data['lang']]; ?></a>
+                                        <a href="<?= BASE_URL . $button['url']; ?>" class="btn-slider rounded"><?= $button['text'][$lang]; ?></a>
                                     <?php endforeach; ?>
                                 </div>
                             </li>
@@ -161,10 +215,10 @@
 
                             foreach ($data['sectionContents'] as $content) {
                                 if ($content['section_key'] === 'features_heading') {
-                                    $featuresHeading = $content['content'][$data['lang']] ?? 'Không có tiêu đề';
+                                    $featuresHeading = $content['content'][$lang] ?? 'Không có tiêu đề';
                                 }
                                 if ($content['section_key'] === 'features_subheading') {
-                                    $featuresSubheading = $content['content'][$data['lang']] ?? 'Không có phụ đề';
+                                    $featuresSubheading = $content['content'][$lang] ?? 'Không có phụ đề';
                                 }
                             }
                             ?>
@@ -183,7 +237,7 @@
                                             <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
                                         </figure>
 
-                                        <h3><?= $item['name'][$data['lang']]; ?></h3>
+                                        <h3><?= $item['name'][$lang]; ?></h3>
                                         <span class="id-color"><?= $item['price']; ?> 円</span>
                                     </div>
                                 </div>
@@ -202,10 +256,10 @@
 
                         foreach ($data['sectionContents'] as $content) {
                             if ($content['section_key'] === 'menu_heading') {
-                                $menuHeading = $content['content'][$data['lang']] ?? 'Không có tiêu đề';
+                                $menuHeading = $content['content'][$lang] ?? 'Không có tiêu đề';
                             }
                             if ($content['section_key'] === 'menu_subheading') {
-                                $menuSubheading = $content['content'][$data['lang']] ?? 'Không có phụ đề';
+                                $menuSubheading = $content['content'][$lang] ?? 'Không có phụ đề';
                             }
                         }
                         ?>
@@ -218,7 +272,7 @@
                                 <?php $index = 0; // Biến đếm ?>
                                 <?php foreach ($data['menuCategories'] as $category): ?>
                                     <li class="<?= $index === 0 ? 'active' : ''; ?>" data-link="#section-services-tab">
-                                        <span><?= $category['name'][$data['lang']]; ?></span><div class="v-border"></div>
+                                        <span><?= $category['name'][$lang]; ?></span><div class="v-border"></div>
                                     </li>
                                     <?php $index++; // Tăng biến đếm ?>
                                 <?php endforeach; ?>
@@ -233,11 +287,11 @@
                                                 <div class="post-menu">
                                                     <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
                                                     <div class="sub-item-service meta">
-                                                        <div class="c1"><?= $item['name'][$data['lang']]; ?></div>
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
                                                         <div class="c2"></div>
                                                         <div class="c3"><?= $item['price']; ?>  円</div>
                                                     </div>
-                                                    <div class="service-text meta-content"><?= $item['description'][$data['lang']]; ?></div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
@@ -253,11 +307,11 @@
                                                 <div class="post-menu">
                                                     <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
                                                     <div class="sub-item-service meta">
-                                                        <div class="c1"><?= $item['name'][$data['lang']]; ?></div>
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
                                                         <div class="c2"></div>
                                                         <div class="c3"><?= $item['price']; ?>  円</div>
                                                     </div>
-                                                    <div class="service-text meta-content"><?= $item['description'][$data['lang']]; ?></div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
@@ -276,11 +330,11 @@
                                                 <div class="post-menu">
                                                     <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
                                                     <div class="sub-item-service meta">
-                                                        <div class="c1"><?= $item['name'][$data['lang']]; ?></div>
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
                                                         <div class="c2"></div>
                                                         <div class="c3"><?= $item['price']; ?>  円</div>
                                                     </div>
-                                                    <div class="service-text meta-content"><?= $item['description'][$data['lang']]; ?></div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
@@ -310,10 +364,10 @@
 
                             foreach ($data['sectionContents'] as $content) {
                                 if ($content['section_key'] === 'form_heading') {
-                                    $formHeading = $content['content'][$data['lang']] ?? 'Không có tiêu đề';
+                                    $formHeading = $content['content'][$lang] ?? 'Không có tiêu đề';
                                 }
                                 if ($content['section_key'] === 'form_subheading') {
-                                    $formSubheading = $content['content'][$data['lang']] ?? 'Không có phụ đề';
+                                    $formSubheading = $content['content'][$lang] ?? 'Không có phụ đề';
                                 }
                             }
                             ?>
@@ -379,7 +433,7 @@
                 <div class="row">
                     <div class="container">
                         <div class="col-md-4">
-                            &copy; Copyright 2025 - Delizus by AutoTeam                     
+                            <?= $data['settings'][4]['value']['value']; ?>                   
                         </div>
                         <div class="col-md-4 text-center">
                             <img class="logo" src="<?= BASE_URL; ?>/public/images/logo.png" alt="">
@@ -467,7 +521,7 @@
             var nowTemp = new Date();
             var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(),
 				nowTemp.getDate(), 0, 0, 0, 0);
-            var checkin = ('#date').datepicker({
+            var checkin = $('#date').datepicker({
                 onRender: function (date) {
                     return date.valueOf() < now.valueOf() ?
 						'disabled' : '';

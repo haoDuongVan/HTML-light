@@ -35,12 +35,6 @@
             }else{
                 $('#phone').removeClass("error_input");
             }
-            if (table.length === 0) {
-                error = true;
-                $('#table').addClass("error_input");
-            } else {
-                $('#table').removeClass("error_input");
-            }
             if(message.length == 0){
                 var error = true;
                 $('#message').addClass("error_input");
