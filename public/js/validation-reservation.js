@@ -1,13 +1,32 @@
 $(document).ready(function () {
+    // Validate chỉ cho phép nhập chữ vào ô name
+    $('#name').on('input', function() {
+        var value = $(this).val();
+        $(this).val(value.replace(/[^\p{L}\s]/gu, '').substring(0, 25));
+    });
+
+    // Validate chỉ cho phép nhập số vào ô person
+    $('#person').on('input', function() {
+        var value = $(this).val();
+        $(this).val(value.replace(/[^0-9]/g, '')); // Loại bỏ các ký tự không phải số
+        if (parseInt(value, 10) > 99) {
+            $(this).val(99); // Giới hạn số người dưới 99
+        }
+    });
+
+    // Validate chỉ cho phép nhập số vào ô table và giới hạn 10 ký tự
+    $('#table').on('input', function() {
+        var value = $(this).val();
+       $(this).val(value.substring(0, 10)); // Giới hạn 10 ký tự
+    });
+
     $('#send_message').click(function (e) {
-        // Stop form submission & check the validation
         e.preventDefault();
 
         // Variable declaration
         var error = false;
         var name = $('#name').val();
         var email = $('#email').val();
-        var phone = $('#phone').val();
         var message = $('#message').val();
         var date = $('#date').val();
         var time = $('#time').val();
@@ -19,7 +38,7 @@ $(document).ready(function () {
         });
 
         // Form field validation
-        if (name.length === 0) {
+        if (name.length === 0 || name.length > 25) {
             error = true;
             $('#name').addClass("error_input");
         } else {
@@ -47,14 +66,14 @@ $(document).ready(function () {
             $('#time').removeClass("error_input");
         }
 
-        if (person.length === 0) {
+        if (person.length === 0 || parseInt(person, 10) > 99) {
             error = true;
             $('#person').addClass("error_input");
         } else {
             $('#person').removeClass("error_input");
         }
 
-        if (table.length === 0) {
+        if (table.length === 0 || table.length > 10) {
             error = true;
             $('#table').addClass("error_input");
         } else {
@@ -63,24 +82,35 @@ $(document).ready(function () {
 
         // If there is no validation error, next to process the mail function
         if (!error) {
-            // Disable submit button just after the form processed 1st time successfully.
-            $('#send_message').attr({ 'disabled': 'true', 'value': 'Sending...' });
+            var currentLang = $('html').attr('lang') || 'vi';
+            var buttonTexts = {
+                vi: 'Đang gửi...',
+                en: 'Sending...',
+                jp: '送信中...'
+            };
 
-            /* Post Ajax function of jQuery to get all the data from the submission of the form as soon as the form sends the values to email.php */
-            $.post("reservation.php", $("#contact_form").serialize(), function (result) {
-                // Check the result set from email.php file.
-                if (result === 'sent') {
-                    // If the email is sent successfully, remove the submit button
-                    $('#submit').remove();
-                    // Display the success message
+            var originalText = $('#send_message').val();
+            console.log("Original Text:", originalText);
+            $('#send_message').val(buttonTexts[currentLang]).attr('disabled', true);
+            $('#send_message').prop('disabled', true);
+            // console.log("Button text updated and disabled.");
+
+            $.post("/restaurant/home/bookTable", $("#contact_form").serialize(), function (result) {
+                // console.log("Result:", result, "Type:", typeof result);
+                if (result.trim().toLowerCase() === 'sent') {
                     $('#mail_success').fadeIn(500);
+                    $('#submit').remove();
+                    console.log('Success');
                 } else {
-                    // Display the error message
                     $('#mail_fail').fadeIn(500);
-                    // Enable the submit button again
-                    $('#send_message').removeAttr('disabled').attr('value', 'Send The Message');
+                    $('#send_message').val(originalText).removeAttr('disabled');
+                    console.log('Failed');
                 }
+            }).fail(function (xhr, status, error) {
+                console.error("AJAX error:", error, "Status:", status, "Response:", xhr.responseText);
+                $('#send_message').val(originalText).removeAttr('disabled');
             });
         }
     });
 });
+

@@ -93,59 +93,42 @@ class HomeController extends Controller {
 
     }
 
-    // public function bookTable() {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         $bookingModel = $this->model('Booking');
-    //         $result = $bookingModel->addBooking($_POST);
-    //         $message = $result ? "Đặt bàn thành công!" : "Đặt bàn thất bại!";
-    //         $this->view('home', ['message' => $message]);
-    //     }
-    // }
-    // public function bookTable() {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         $bookingModel = $this->model('Booking');
-    
-    //         $data = [
-    //             'name' => $_POST['name'],
-    //             'email' => $_POST['email'],
-    //             'phone' => $_POST['phone'],
-    //             'message' => $_POST['message'],
-    //             'date' => $_POST['date'],
-    //             'time' => $_POST['time'],
-    //             'person' => $_POST['person'],
-    //             'table' => $_POST['table']
-    //         ];
-    
-    //         $result = $bookingModel->addBooking($data);
-    //         if ($result) {
-    //             echo 'sent'; // Thành công
-    //         } else {
-    //             echo 'failed'; // Thất bại
-    //         }
-    //     }
-    // }
-
     public function bookTable() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bookingModel = new Booking();
+            $db = new Database();
+            
+            // Lấy thông tin cài đặt
+            $db->query("SELECT * FROM settings WHERE `key` = 'SUPPORT_EMAIL'");
+            $mailto = $db->fetch();
+
+            $toEmail = json_decode($mailto['value'], true);
     
             $data = [
-                'name' => $_POST['name'],
-                'email' => $_POST['email'],
-                'phone' => $_POST['phone'],
-                'message' => $_POST['message'],
-                'date' => $_POST['date'],
-                'time' => $_POST['time'],
-                'person' => $_POST['person'],
+                'name' => $_POST['name'] ,
+                'email' => $_POST['email'] ,
+                'message' => $_POST['message'] ,
+                'date' => $_POST['date'] ,
+                'time' => $_POST['time'] ,
+                'person' => $_POST['person'] ,
                 'table' => $_POST['table']
             ];
+
+            if (empty($data['name']) || empty($data['email']) || empty($data['date']) || empty($data['time'])
+                || empty($data['person']) || empty($data['table'])) {
+                echo 'failed';
+                return;
+            }
     
-            $result = $bookingModel->sendBookingEmail($data);
-    
+            $result = $bookingModel->sendBookingEmail($data, $toEmail);
+
             if ($result) {
                 echo 'sent'; // Gửi email thành công
+                // print_r("Email sent successfully");
             } else {
                 echo 'failed'; // Gửi email thất bại
+                // print_r("Email sent failed");
+
             }
         }
     }

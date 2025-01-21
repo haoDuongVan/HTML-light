@@ -1894,9 +1894,9 @@ margin:5px 0 5px 0;
 	height:auto;
 	}
 	
-	.form-dark input[type=text], .form-dark textarea, .form-dark input[type=email]{
+	#contact_form.form-dark input[type=text], #contact_form.form-dark textarea, #contact_form.form-dark input[type=email]{
 	padding:10px !important;
-	color:#fff;
+	color:#fff !important;
 	background:#191919 !important;
 	border-radius:0 !important;
 	height:auto;
@@ -5384,8 +5384,33 @@ display:table;
 	display:none;
 	}
 	
-	header .info{
-	display:none !important;
+	/* Hiển thị lại toàn bộ `div.info` */
+	header .info {
+		display: inline-block !important; /* Hiển thị bắt buộc */
+		opacity: 1 !important;
+	}
+
+	/* Ẩn toàn bộ phần tử con bên trong `div.col-md-8` */
+	header .info .col-md-8 > .col {
+		display: none !important;
+	}
+
+	/* Chỉ hiển thị phần tử con cuối cùng */
+	header .info .col-md-8 > .col:last-child {
+		display: block !important;
+	}
+
+	/* Ẩn khối `.col-md-4.text-right` */
+	header .info .col-md-4.text-right {
+		display: none !important;
+	}
+
+	.dropdown > a {
+		position: absolute;
+		border: solid 1px rgba(255, 255, 255, .3);
+		padding: 5px;
+		margin-top: -10px;
+		min-width: 180px;
 	}
 	
 	header.header-bg{

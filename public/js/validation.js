@@ -1,4 +1,11 @@
  $(document).ready(function(){
+        // Validate chỉ cho phép nhập chữ vào ô name
+        $('#name').on('input', function() {
+            var value = $(this).val();
+            $(this).val(value.replace(/[^\p{L}\s]/gu, '').substring(0, 25));
+        });
+
+
         $('#send_message').click(function(e){
             
             //Stop form submission & check the validation
@@ -10,7 +17,6 @@
             var email = $('#email').val();
 			var phone = $('#phone').val();
             var message = $('#message').val();
-			var table = $('#table').val();
             
 			$('#name,#email,#phone,#message').click(function(){
 				$(this).removeClass("error_input");

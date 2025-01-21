@@ -1,8 +1,8 @@
+<?php $lang = trim($data['lang']); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') ?>">
 <head>
 <meta charset="utf-8">
-    <?php $lang = trim($data['lang']); ?>
     <title><?= $data['settings'][1]['value'][$lang]; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Delizus is the most complete restaurantwebsite template">
@@ -281,7 +281,6 @@
         <script src="<?= BASE_URL; ?>/public/js/jquery.magnific-popup.min.js"></script>
         <script src="<?= BASE_URL; ?>/public/js/enquire.min.js"></script>
         <script src="<?= BASE_URL; ?>/public/js/jquery.stellar.min.js"></script>
-        <script src="<?= BASE_URL; ?>/public/js/validation.js"></script>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="<?= BASE_URL; ?>/public/js/map.js"></script>
         <script src="<?= BASE_URL; ?>/public/js/designesia.js"></script><!-- RS5.0 Core JS Files -->
