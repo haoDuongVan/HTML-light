@@ -2,7 +2,7 @@
 class MenuController extends Controller {
     public function index() {
         // Lấy ngôn ngữ hiện tại từ session
-        $lang = trim($_SESSION['lang']);
+        $lang = Language::getLanguage();
 
         $db = new Database();
 

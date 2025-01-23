@@ -1,5 +1,5 @@
 <?php
-class Booking {
+class Mailer {
     public function sendBookingEmail($data, $toEmail) {
         $subject = 'Đơn đặt bàn mới'; // Tiêu đề email
         $to = $toEmail['value']; // Email thông báo lấy từ database
@@ -13,6 +13,28 @@ class Booking {
         $message .= "<p><strong>Thời gian:</strong> {$data['time']}</p>";
         $message .= "<p><strong>Số người:</strong> {$data['person']}</p>";
         $message .= "<p><strong>Số bàn:</strong> {$data['table']}</p>";
+        $message .= "<p><strong>Lời nhắn:</strong> {$data['message']}</p>";
+
+        // Header email
+        $headers = "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        $headers .= "From: $emailFrom\r\n";
+        // $headers .= "Return-Path: " . $emailFrom . "\r\n";
+
+        // Gửi email
+        return mail($to, $subject, $message, $headers);
+    }
+
+    public function sendContactEmail($data, $toEmail) {
+        $subject = "Liên hệ từ {$data['name']}"; // Tiêu đề email
+        $to = $toEmail['value']; // Email thông báo lấy từ database
+        $emailFrom = $data['name'] . ' <' . $data['email'] . '>';
+
+        // Nội dung email
+        $message = "<h3>Khách hàng hỏi thăm</h3>";
+        $message .= "<p><strong>Tên:</strong> {$data['name']}</p>";
+        $message .= "<p><strong>Email:</strong> {$data['email']}</p>";
+        $message .= "<p><strong>Số điện thoại:</strong> {$data['phone']}</p>";
         $message .= "<p><strong>Lời nhắn:</strong> {$data['message']}</p>";
 
         // Header email

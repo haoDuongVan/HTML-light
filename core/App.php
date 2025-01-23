@@ -45,6 +45,7 @@ class App {
     private function parseUrl() {
         // Lấy URL từ REQUEST_URI
         $requestUri = $_SERVER['REQUEST_URI'];
+        // print_r($requestUri);
         $scriptName = dirname($_SERVER['SCRIPT_NAME']);
         $relativeUrl = str_replace($scriptName, '', $requestUri);
 
@@ -56,7 +57,7 @@ class App {
         // Hiển thị thông báo lỗi hoặc chuyển hướng
         http_response_code(404); // Mã HTTP 404
         echo "<h1>404 - NO PAGE FOUND</h1>";
-        // echo "<p>$message</p>";
+        echo "<p>$message</p>";
         exit();
     }
 }

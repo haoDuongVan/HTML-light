@@ -1899,7 +1899,6 @@ margin:5px 0 5px 0;
 	color:#fff !important;
 	background:#191919 !important;
 	border-radius:0 !important;
-	height:auto;
 	}
 	
 	/* heading */
@@ -5411,6 +5410,47 @@ display:table;
 		padding: 5px;
 		margin-top: -10px;
 		min-width: 180px;
+	}
+
+	.dropdown ul{
+		position:absolute;
+		padding:26px 0;
+		min-width:180px;
+		display:none;
+		height:0;
+	}
+
+
+	.row-fuild {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	.row-fuild .col-md-6 {
+		flex: 1 1 100%; /* Đảm bảo mỗi khối chiếm 100% chiều rộng trên điện thoại */
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+	
+	@media (min-width: 768px) {
+		.row-fuild .col-md-6 {
+			flex: 1 1 50%; /* Trên màn hình lớn hơn, mỗi khối chiếm 50% chiều rộng */
+			max-width: 50%;
+		}
+	}
+	
+	.middle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.small-border {
+		display: block;
+		width: 50px;
+		height: 2px;
+		background: #000;
+		margin: 10px auto;
 	}
 	
 	header.header-bg{

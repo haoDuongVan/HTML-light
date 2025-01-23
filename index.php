@@ -15,31 +15,47 @@ $dbUser = $_ENV['DB_USER'];
 $dbPass = $_ENV['DB_PASS'];
 
 // Định nghĩa đường dẫn cơ bản
-define('BASE_URL', '/restaurant');
+define('BASE_URL', '');
 
-// Khởi tạo session
-session_start();
+// // Khởi tạo session
+// session_start();
 
-// Thiết lập ngôn ngữ mặc định nếu chưa tồn tại trong session
-if (!isset($_SESSION['lang'])) {
-    $_SESSION['lang'] = 'vi'; // Ngôn ngữ mặc định
+// Kiểm tra và xử lý ngôn ngữ từ query string
+if (isset($_GET['lang'])) {
+    $lang = $_GET['lang'];
+    setcookie('lang', $lang, time() + (86400 * 30), "/"); // Lưu cookie trong 30 ngày
+    // Chuyển hướng đến URL không có query string để tránh lặp lại
+    $redirectUrl = strtok($_SERVER['REQUEST_URI'], '?');
+    header('Location: ' . $redirectUrl, true, 301);
+    exit();
 }
 
-// Kiểm tra nếu có thay đổi ngôn ngữ qua URL hoặc form
-if (isset($_GET['lang']) && in_array(trim($_GET['lang']), ['vi', 'en', 'jp'])) {
-    $_SESSION['lang'] = trim($_GET['lang']);;
+// Lấy ngôn ngữ từ Local Storage (qua JavaScript) hoặc đặt mặc định
+if (!empty($_COOKIE['lang'])) {
+    $lang = $_COOKIE['lang'];
+} else {
+    $lang = 'vi'; // Ngôn ngữ mặc định
+    setcookie('lang', $lang, time() + (86400 * 30), "/"); // Lưu cookie trong 30 ngày
+}
 
-    // Xóa query string chứa 'lang' và chuyển hướng
+// Loại bỏ các tham số `i` và `lang` khỏi URL
+if (isset($_GET['i']) || isset($_GET['lang'])) {
+    // Lấy URL không chứa query string
     $redirectUrl = strtok($_SERVER['REQUEST_URI'], '?');
+    
+    // Phân tích query string thành mảng
     if (!empty($_SERVER['QUERY_STRING'])) {
         parse_str($_SERVER['QUERY_STRING'], $queryParams);
         unset($queryParams['lang']);
+        unset($queryParams['i']);   // Loại bỏ `i`
+        
+        // Tạo lại query string nếu còn tham số
         $queryString = http_build_query($queryParams);
         $redirectUrl .= $queryString ? '?' . $queryString : '';
     }
 
     // Chuyển hướng đến URL mới
-    header('Location: ' . $redirectUrl);
+    header('Location: ' . $redirectUrl, true, 301);
     exit();
 }
 

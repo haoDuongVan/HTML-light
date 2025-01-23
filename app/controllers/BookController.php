@@ -2,7 +2,7 @@
 class BookController extends Controller {
     public function index() {
         // Lấy ngôn ngữ hiện tại từ session
-        $lang = trim($_SESSION['lang']);
+        $lang = Language::getLanguage();
 
         $db = new Database();
 
@@ -53,7 +53,7 @@ class BookController extends Controller {
 
     public function bookTable() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $bookingModel = new Booking();
+            $mailModel = new Mailer();
             $db = new Database();
             
             // Lấy thông tin cài đặt
@@ -78,7 +78,7 @@ class BookController extends Controller {
                 return;
             }
     
-            $result = $bookingModel->sendBookingEmail($data, $toEmail);
+            $result = $mailModel->sendBookingEmail($data, $toEmail);
 
             if ($result) {
                 echo 'sent'; // Gửi email thành công

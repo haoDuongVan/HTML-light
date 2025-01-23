@@ -2,7 +2,7 @@
 class ContactController extends Controller {
     public function index() {
         // Lấy ngôn ngữ hiện tại từ session
-        $lang = trim($_SESSION['lang']);
+        $lang = Language::getLanguage();
 
         $db = new Database();
 
@@ -62,18 +62,35 @@ class ContactController extends Controller {
 
     public function sendEmail() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $message = $_POST['message'];
+            $mailModel = new Mailer();
+            $db = new Database();
+            
+            // Lấy thông tin cài đặt
+            $db->query("SELECT * FROM settings WHERE `key` = 'SUPPORT_EMAIL'");
+            $mailto = $db->fetch();
+            $toEmail = json_decode($mailto['value'], true);
 
-            $to = "your-email@example.com";
-            $subject = "Liên hệ từ $name";
-            $headers = "From: $email";
+            $data = [
+                'name' => $_POST['name'] ,
+                'email' => $_POST['email'] ,
+                'message' => $_POST['message'] ,
+                'phone' => $_POST['phone'] ,
+            ];
+            if (empty($data['name']) || empty($data['email']) || 
+                empty($data['phone']) || empty($data['message'])) {
+                echo 'failed';
+                return;
+            }
 
-            if (mail($to, $subject, $message, $headers)) {
-                $this->view('contact', ['message' => 'Email đã được gửi thành công!']);
+            $result = $mailModel->sendContactEmail($data, $toEmail);
+
+            if ($result) {
+                echo 'sent'; // Gửi email thành công
+                // print_r("Email sent successfully");
             } else {
-                $this->view('contact', ['message' => 'Gửi email thất bại.']);
+                echo 'failed'; // Gửi email thất bại
+                // print_r("Email sent failed");
+
             }
         }
     }

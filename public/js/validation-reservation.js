@@ -95,7 +95,7 @@ $(document).ready(function () {
             $('#send_message').prop('disabled', true);
             // console.log("Button text updated and disabled.");
 
-            $.post("/restaurant/home/bookTable", $("#contact_form").serialize(), function (result) {
+            $.post("/home/bookTable", $("#contact_form").serialize(), function (result) {
                 // console.log("Result:", result, "Type:", typeof result);
                 if (result.trim().toLowerCase() === 'sent') {
                     $('#mail_success').fadeIn(500);

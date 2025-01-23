@@ -5,6 +5,11 @@
             $(this).val(value.replace(/[^\p{L}\s]/gu, '').substring(0, 25));
         });
 
+        // Validate chỉ cho phép nhập số vào ô person
+        $('#phone').on('input', function() {
+            var value = $(this).val();
+            $(this).val(value.replace(/[^0-9]/g, '').substring(0, 13)); // Loại bỏ các ký tự không phải số
+        });
 
         $('#send_message').click(function(e){
             
@@ -23,7 +28,7 @@
 			});
             
          	// Form field validation
-            if(name.length == 0){
+            if(name.length == 0 || name.length > 25){
                 var error = true;
                 $('#name').addClass("error_input");
             }else{
@@ -35,7 +40,7 @@
             }else{
                 $('#email').removeClass("error_input");
             }
-			if(phone.length == 0){
+			if(phone.length == 0 || phone.length > 13){
                 var error = true;
                 $('#phone').addClass("error_input");
             }else{
@@ -49,24 +54,34 @@
             }
             
             // If there is no validation error, next to process the mail function
-            if(error == false){
-               // Disable submit button just after the form processed 1st time successfully.
-                $('#send_message').attr({'disabled' : 'true', 'value' : 'Sending...' });
-                
-				/* Post Ajax function of jQuery to get all the data from the submission of the form as soon as the form sends the values to email.php*/
-                $.post("email.php", $("#contact_form").serialize(),function(result){
-                    //Check the result set from email.php file.
-                    if(result == 'sent'){
-                        //If the email is sent successfully, remove the submit button
-                         $('#submit').remove();
-                        //Display the success message
+            if(!error){
+                var currentLang = $('html').attr('lang') || 'vi';
+                var buttonTexts = {
+                    vi: 'Đang gửi...',
+                    en: 'Sending...',
+                    jp: '送信中...'
+                };
+    
+                var originalText = $('#send_message').val();
+                console.log("Original Text:", originalText);
+                $('#send_message').val(buttonTexts[currentLang]).attr('disabled', true);
+                $('#send_message').prop('disabled', true);
+                // console.log("Button text updated and disabled.");
+    
+                $.post("/contact/sendEmail", $("#contact_form").serialize(), function (result) {
+                    // console.log("Result:", result, "Type:", typeof result);
+                    if (result.trim().toLowerCase() === 'sent') {
                         $('#mail_success').fadeIn(500);
-                    }else{
-                        //Display the error message
+                        $('#submit').remove();
+                        console.log('Success');
+                    } else {
                         $('#mail_fail').fadeIn(500);
-                        // Enable the submit button again
-                        $('#send_message').removeAttr('disabled').attr('value', 'Send The Message');
+                        $('#send_message').val(originalText).removeAttr('disabled');
+                        console.log('Failed');
                     }
+                }).fail(function (xhr, status, error) {
+                    console.error("AJAX error:", error, "Status:", status, "Response:", xhr.responseText);
+                    $('#send_message').val(originalText).removeAttr('disabled');
                 });
             }
         });    

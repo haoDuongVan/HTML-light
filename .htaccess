@@ -6,3 +6,48 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Chuyển hướng toàn bộ yêu cầu đến index.php
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+
+# Bật hiển thị lỗi PHP (chỉ nên dùng khi debug)
+# php_value display_errors On
+# php_value mbstring.http_input auto
+# php_value date.timezone Asia/Tokyo
+
+# Bảo vệ file nhạy cảm
+# <FilesMatch "^\.env$">
+#     Order allow,deny
+#     Deny from all
+# </FilesMatch>
+
+# Đặt file mặc định
+# DirectoryIndex index.php index.html index.htm
+
+# # Chuyển hướng lỗi đến index.php
+# ErrorDocument 400 /index.php
+# ErrorDocument 404 /index.php
+# ErrorDocument 200 /index.php
+
+# # Bật URL rewriting
+# RewriteEngine On
+# RewriteBase /
+
+# # Chuyển hướng toàn bộ yêu cầu về index.php trừ các file vật lý
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Bảo vệ thư mục vendor
+# <Directory "/vendor">
+#     Order deny,allow
+#     Deny from all
+# </Directory>
+
+# # Bảo vệ thư mục core
+# <Directory "/core">
+#     Order deny,allow
+#     Deny from all
+# </Directory>
+
+# # Bật tính năng nén file (tối ưu tốc độ tải)
+# <IfModule mod_deflate.c>
+#     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+# </IfModule>

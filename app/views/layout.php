@@ -1,9 +1,8 @@
-<?php $lang = trim($data['lang']); ?>   
 <!DOCTYPE html>
+<?php $lang = trim($data['lang']); ?>   
 <html lang="<?= htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') ?>">
 <head>
     <meta charset="UTF-8">
-    <meta charset="utf-8">
     <title><?= $data['settings'][1]['value'][$lang]; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Delizus is the most complete restaurantwebsite template">
@@ -25,11 +24,6 @@
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/style.css" type="text/css"><!-- custom background -->
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/bg.css" type="text/css">
-<!-- start : home và book -->
-    <!-- additional css files -->
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/datepicker.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/bootstrap-timepicker.min.css" type="text/css">
-<!-- end -->
     <!-- revolution slider custom css -->
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/rev-settings.css" type="text/css">
 
@@ -39,23 +33,23 @@
     <!-- load fonts -->
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/font-awesome/css/font-awesome.css" type="text/css">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/elegant_font/HTML_CSS/style.css" type="text/css">
-<!-- start : home -->
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/et-line-font/style.css" type="text/css">
-<!-- menu và book -->
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/elegant_font/HTML_CSS/lte-ie7.js" type="text/css">
-<!-- end -->
 
-<!-- start : home only-->
+<?php if (isset($is_contact) && $is_contact): ?>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<?php endif; ?>
+
+<?php if (isset($is_home) && $is_home): ?>
     <!-- RS5.0 Main Stylesheet -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/public/revolution/css/settings.css">
 
     <!-- RS5.0 Layers and Navigation Styles -->
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/public/revolution/css/layers.css">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/public/revolution/css/navigation.css">
+<?php endif; ?>
 <!-- end -->
     <?php if (isset($custom_css)): ?>
         <?php foreach ($custom_css as $css_file): ?>
-            <link rel="stylesheet" href="<?= $css_file ?>">
+            <link rel="stylesheet" href="<?= BASE_URL; ?>/<?= $css_file ?> " type="text/css">
         <?php endforeach; ?>
     <?php endif; ?>
 </head>
@@ -127,7 +121,8 @@
                     </div>
                 </div>
             <?php endif; ?>
-            
+            <!-- end -->
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -213,27 +208,29 @@
     <script src="<?= BASE_URL; ?>/public/js/jquery.flexslider-min.js"></script>
     <script src="<?= BASE_URL; ?>/public/js/jquery.scrollto.js"></script>
     <script src="<?= BASE_URL; ?>/public/js/owl.carousel.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/jquery.countTo.js"></script>
+    <!-- <script src="<?= BASE_URL; ?>/public/js/jquery.countTo.js"></script> -->
     <script src="<?= BASE_URL; ?>/public/js/classie.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/video.resize.js"></script>
-<!-- menu ko có -->
-    <script src="<?= BASE_URL; ?>/public/js/validation-reservation.js"></script>
-<!-- end -->
+    <!-- <script src="<?= BASE_URL; ?>/public/js/video.resize.js"></script> -->
     <script src="<?= BASE_URL; ?>/public/js/wow.min.js"></script>
     <script src="<?= BASE_URL; ?>/public/js/jquery.magnific-popup.min.js"></script>
     <script src="<?= BASE_URL; ?>/public/js/enquire.min.js"></script>
     <script src="<?= BASE_URL; ?>/public/js/jquery.stellar.min.js"></script>
     <script src="<?= BASE_URL; ?>/public/js/designesia.js"></script><!-- additional js files -->
-<!-- menu ko có -->
-    <script src="<?= BASE_URL; ?>/public/js/bootstrap-datepicker.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/bootstrap-timepicker.min.js"></script>
-<!-- end -->
-
+<?php if (isset($custom_js)): ?>
+        <?php foreach ($custom_js as $js_file): ?>
+            <script src="<?= $js_file ?>"></script>
+        <?php endforeach; ?>
+<?php endif; ?>
+<?php if (isset($is_contact) && $is_contact): ?>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="<?= BASE_URL; ?>/public/js/map.js"></script>
+<?php endif; ?>
     <!-- RS5.0 Core JS Files -->
     <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
     <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
 
     <!-- RS5.0 Extensions Files -->
+<?php if ((isset($is_home) && $is_home) || (isset($is_book) && $is_book)): ?>
     <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.video.min.js"></script>
     <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
     <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
@@ -321,6 +318,7 @@
                 }
             });
     </script>
+<?php endif; ?>
 <!-- end -->
 
 </body>
