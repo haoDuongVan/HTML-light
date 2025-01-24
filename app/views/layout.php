@@ -15,24 +15,9 @@
 
     <!-- CSS Files
     ================================================== -->
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/animate.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/plugin.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/owl.theme.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/owl.transitions.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/style.css" type="text/css"><!-- custom background -->
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/bg.css" type="text/css">
-    <!-- revolution slider custom css -->
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/rev-settings.css" type="text/css">
-
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/main.min.css ">
     <!-- color scheme -->
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/color.css" type="text/css" id="colors">
-
-    <!-- load fonts -->
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/font-awesome/css/font-awesome.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/fonts/elegant_font/HTML_CSS/style.css" type="text/css">
 
 <?php if (isset($is_contact) && $is_contact): ?>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -201,124 +186,25 @@
 
     <!-- Javascript Files
     ================================================== -->
-    <script src="<?= BASE_URL; ?>/public/js/jquery.min.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/bootstrap.min.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/jquery.isotope.min.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/easing.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/jquery.flexslider-min.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/jquery.scrollto.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/owl.carousel.js"></script>
-    <!-- <script src="<?= BASE_URL; ?>/public/js/jquery.countTo.js"></script> -->
-    <script src="<?= BASE_URL; ?>/public/js/classie.js"></script>
-    <!-- <script src="<?= BASE_URL; ?>/public/js/video.resize.js"></script> -->
-    <script src="<?= BASE_URL; ?>/public/js/wow.min.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/jquery.magnific-popup.min.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/enquire.min.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/jquery.stellar.min.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/designesia.js"></script><!-- additional js files -->
-<?php if (isset($custom_js)): ?>
-        <?php foreach ($custom_js as $js_file): ?>
-            <script src="<?= $js_file ?>"></script>
-        <?php endforeach; ?>
-<?php endif; ?>
-<?php if (isset($is_contact) && $is_contact): ?>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="<?= BASE_URL; ?>/public/js/map.js"></script>
-<?php endif; ?>
+    <script src="<?= BASE_URL; ?>/public/js/main.min.js"   ></script>
+    <?php if (isset($custom_js)): ?>
+            <?php foreach ($custom_js as $js_file): ?>
+                <script src="<?= $js_file ?>" defer></script>
+            <?php endforeach; ?>
+    <?php endif; ?>
     <!-- RS5.0 Core JS Files -->
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
-
-    <!-- RS5.0 Extensions Files -->
-<?php if ((isset($is_home) && $is_home) || (isset($is_book) && $is_book)): ?>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.video.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-
-<!-- mỗi file một khác -->
-    <script>
-        jQuery(document).ready(function () {
-            // revolution slider
-            jQuery("#revolution-slider").revolution({
-                sliderType: "standard",
-                sliderLayout: "fullscreen",
-                delay: 3500,
-                navigation: {
-                    arrows: { enable: true }
-                },
-                parallax: {
-                    type: "mouse",
-                    origo: "slidercenter",
-                    speed: 2000,
-                    levels: [2, 3, 4, 5, 6, 7, 12, 16, 10, 50],
-                },
-                spinner: "off",
-                gridwidth: 1140,
-                gridheight: 600,
-                disableProgressBar: "on"
-            });
-
-
-            // date picker settings
-            var nowTemp = new Date();
-            var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(),
-				nowTemp.getDate(), 0, 0, 0, 0);
-            var checkin = $('#date').datepicker({
-                onRender: function (date) {
-                    return date.valueOf() < now.valueOf() ?
-						'disabled' : '';
-                }
-                }).on('changeDate', function (ev) {
-                    if (ev.date.valueOf() > checkin.date.valueOf()) {
-                        var newDate = new Date(ev.date)
-                        newDate.setDate(newDate.getDate() + 1);
-                        checkin.setValue(newDate);
-                    }
-                    checkin.hide();
-                }).data('datepicker');
-            });
-
-            // Time picker settings
-            $('#time').timepicker({
-                showMeridian: false, // 24-hour format
-                minuteStep: 15, // Step size for minutes
-                defaultTime: false, // Set default time to current time
-                showInputs: false,
-                disableFocus: true,
-                template: 'dropdown',
-                maxHours: 24,
-                snapToStep: true
-            }).on('focus', function() {
-                var currentTime = new Date();
-                var hours = currentTime.getHours();
-                var minutes = currentTime.getMinutes();
-                if (hours < 9) {
-                    hours = 9;
-                    minutes = 0;
-                } else if (hours >= 24) {
-                    hours = 23;
-                    minutes = 45;
-                }
-                $(this).timepicker('setTime', hours + ':' + (minutes < 10 ? '0' : '') + minutes);
-            });
-
-            // Giới hạn thời gian từ 9h sáng đến 12h đêm
-            $('#time').timepicker().on('changeTime.timepicker', function(e) {
-                var hours = e.time.hours;
-                var minutes = e.time.minutes;
-                if (hours < 9) {
-                    $(this).timepicker('setTime', '09:00');
-                } else if (hours >= 24) {
-                    $(this).timepicker('setTime', '23:45');
-                }
-            });
-    </script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/jquery.themepunch.tools.min.js?rev=5.0" defer></script>
+    <script type="text/javascript" src="<?= BASE_URL; ?>/public/revolution/js/jquery.themepunch.revolution.min.js?rev=5.0" defer></script>
+    <?php if ((isset($is_home) && $is_home) || (isset($is_book) && $is_book)): ?>
+        <?php foreach ($extentions_js as $js_file): ?>
+                <script src="<?= $js_file ?>" defer></script>
+            <?php endforeach; ?>
+    <?php endif; ?>
+<?php if (isset($is_contact) && $is_contact): ?>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" defer></script>
+    <script src="<?= BASE_URL; ?>/public/js/map.js" defer></script>
 <?php endif; ?>
+
 <!-- end -->
 
 </body>

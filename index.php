@@ -17,46 +17,38 @@ $dbPass = $_ENV['DB_PASS'];
 // Định nghĩa đường dẫn cơ bản
 define('BASE_URL', '');
 
-// // Khởi tạo session
-// session_start();
+// Khởi tạo session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Kiểm tra và xử lý ngôn ngữ từ query string
-if (isset($_GET['lang'])) {
-    $lang = $_GET['lang'];
-    setcookie('lang', $lang, time() + (86400 * 30), "/"); // Lưu cookie trong 30 ngày
-    // Chuyển hướng đến URL không có query string để tránh lặp lại
-    $redirectUrl = strtok($_SERVER['REQUEST_URI'], '?');
-    header('Location: ' . $redirectUrl, true, 301);
+// Danh sách ngôn ngữ được hỗ trợ
+$supportedLangs = ['vi', 'en', 'jp'];
+$defaultLang = 'vi';
+// 1. Kiểm tra `?lang` từ request và cập nhật session/cookie
+if (isset($_GET['lang']) && in_array($_GET['lang'], $supportedLangs)) {
+    // Lưu vào session
+    $_SESSION['lang'] = $_GET['lang'];
+
+    // Lưu vào cookie (thời hạn 30 ngày)
+    setcookie('lang', $_GET['lang'], time() + (86400 * 30), "/");
+
+    // Chuyển hướng đến URL sạch (loại bỏ ?lang)
+    $redirectUrl = strtok($_SERVER['REQUEST_URI'], '?'); // URL không chứa query string
+    header("Location: $redirectUrl", true, 302); // Chuyển hướng với mã HTTP 302
     exit();
 }
 
-// Lấy ngôn ngữ từ Local Storage (qua JavaScript) hoặc đặt mặc định
-if (!empty($_COOKIE['lang'])) {
+// 2. Lấy ngôn ngữ từ session, cookie hoặc mặc định
+if (isset($_SESSION['lang']) && in_array($_SESSION['lang'], $supportedLangs)) {
+    $lang = $_SESSION['lang'];
+} elseif (isset($_COOKIE['lang']) && in_array($_COOKIE['lang'], $supportedLangs)) {
     $lang = $_COOKIE['lang'];
+    $_SESSION['lang'] = $lang; // Đồng bộ lại session
 } else {
-    $lang = 'vi'; // Ngôn ngữ mặc định
-    setcookie('lang', $lang, time() + (86400 * 30), "/"); // Lưu cookie trong 30 ngày
-}
-
-// Loại bỏ các tham số `i` và `lang` khỏi URL
-if (isset($_GET['i']) || isset($_GET['lang'])) {
-    // Lấy URL không chứa query string
-    $redirectUrl = strtok($_SERVER['REQUEST_URI'], '?');
-    
-    // Phân tích query string thành mảng
-    if (!empty($_SERVER['QUERY_STRING'])) {
-        parse_str($_SERVER['QUERY_STRING'], $queryParams);
-        unset($queryParams['lang']);
-        unset($queryParams['i']);   // Loại bỏ `i`
-        
-        // Tạo lại query string nếu còn tham số
-        $queryString = http_build_query($queryParams);
-        $redirectUrl .= $queryString ? '?' . $queryString : '';
-    }
-
-    // Chuyển hướng đến URL mới
-    header('Location: ' . $redirectUrl, true, 301);
-    exit();
+    $lang = $defaultLang; // Ngôn ngữ mặc định
+    $_SESSION['lang'] = $lang;
+    setcookie('lang', $lang, time() + (86400 * 30), "/");
 }
 
 
@@ -66,4 +58,8 @@ require_once __DIR__ . '/core/App.php';
 require_once __DIR__ . '/core/Controller.php';
 
 // Khởi chạy ứng dụng
-$app = new App();
+try {
+    $app = new App();
+} catch (Exception $e) {
+    echo "Error initializing App: " . $e->getMessage();
+}

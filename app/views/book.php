@@ -5,9 +5,21 @@ $header_class = 'header-solid header-light'; // Class riêng cho <header>
 $custom_css = ['public/css/datepicker.css',
                'public/css/bootstrap-timepicker.min.css',
                 'public/fonts/elegant_font/HTML_CSS/lte-ie7.js'];
-$custom_js = ['public/js/validation-reservation.js',
+                $custom_js = ['public/js/validation-reservation.js',
                 'public/js/bootstrap-datepicker.js',
-                'public/js/bootstrap-timepicker.min.js'];
+                'public/js/bootstrap-timepicker.min.js',
+                'public/js/main.js',];
+
+$extentions_js = [// Extensions
+    'public/revolution/js/extensions/revolution.extension.video.min.js',
+    'public/revolution/js/extensions/revolution.extension.slideanims.min.js',
+    'public/revolution/js/extensions/revolution.extension.layeranimation.min.js',
+    'public/revolution/js/extensions/revolution.extension.navigation.min.js',
+    'public/revolution/js/extensions/revolution.extension.actions.min.js',
+    'public/revolution/js/extensions/revolution.extension.kenburn.min.js',
+    'public/revolution/js/extensions/revolution.extension.migration.min.js',
+    'public/revolution/js/extensions/revolution.extension.parallax.min.js'
+    ];
 
 ob_start();
 ?>

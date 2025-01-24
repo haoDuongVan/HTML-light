@@ -2,8 +2,8 @@
 
 $body_class = 'page-menu'; // Gán class riêng cho <body>
 $header_class = 'header-solid header-light'; // Class riêng cho <header>
-$custom_css = ['public/fonts/elegant_font/HTML_CSS/lte-ie7.js'];
-// $custom_js = ['assets/js/menu.js'];
+$custom_css = [];
+$custom_js = ['public/fonts/elegant_font/HTML_CSS/lte-ie7.js'];
 
 ob_start();
 ?>
@@ -62,7 +62,7 @@ ob_start();
                                     <?php foreach ($data['menuByCategory'][$categoris[$idx]] as $item): ?>
                                         <div class="col-md-6 mb30">
                                             <div class="post-menu">
-                                                <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                                <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
                                                 <div class="sub-item-service meta">
                                                     <div class="c1"><?= $item['name'][$lang]; ?></div>
                                                     <div class="c2"></div>

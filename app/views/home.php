@@ -8,7 +8,19 @@ $custom_css = ['public/css/datepicker.css',
                 'public/revolution/css/settings.css'];
 $custom_js = ['public/js/validation-reservation.js',
                 'public/js/bootstrap-datepicker.js',
-                'public/js/bootstrap-timepicker.min.js'];
+                'public/js/bootstrap-timepicker.min.js',
+                'public/js/main.js',];
+
+$extentions_js = [// Extensions
+    'public/revolution/js/extensions/revolution.extension.video.min.js',
+    'public/revolution/js/extensions/revolution.extension.slideanims.min.js',
+    'public/revolution/js/extensions/revolution.extension.layeranimation.min.js',
+    'public/revolution/js/extensions/revolution.extension.navigation.min.js',
+    'public/revolution/js/extensions/revolution.extension.actions.min.js',
+    'public/revolution/js/extensions/revolution.extension.kenburn.min.js',
+    'public/revolution/js/extensions/revolution.extension.migration.min.js',
+    'public/revolution/js/extensions/revolution.extension.parallax.min.js'
+    ];
 
 ob_start();
 ?>
@@ -20,11 +32,12 @@ ob_start();
             <!-- revolution slider begin -->
             <section id="section-slider" class="fullwidthbanner-container" aria-label="section-slider">
                 <div id="revolution-slider">
+                <p class="fallback">Không thể tải slider. Vui lòng kiểm tra kết nối mạng của bạn.</p>
                     <ul>
                         <?php foreach ($data['sliders'] as $slider): ?>
                             <li data-transition="fade" data-slotamount="10" data-masterspeed="default" data-thumb="">
                                 <!--  BACKGROUND IMAGE -->
-                                <img src="<?= BASE_URL . $slider['image']; ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" />
+                                <img src="<?= BASE_URL . $slider['image']; ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" loading="lazy"/>
 
                                 <div class="tp-caption very-big-white"
                                     data-x="center"
@@ -103,7 +116,7 @@ ob_start();
                                             </span>
                                             <span class="bg-overlay"></span>
                                             <span class="border-overlay"></span>
-                                            <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                            <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
                                         </figure>
 
                                         <h3><?= $item['name'][$lang]; ?></h3>
@@ -154,7 +167,7 @@ ob_start();
                                         <?php foreach ($data['menuByCategory']['main'] as $item): ?>
                                             <div class="col-md-6 mb30">
                                                 <div class="post-menu">
-                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
                                                     <div class="sub-item-service meta">
                                                         <div class="c1"><?= $item['name'][$lang]; ?></div>
                                                         <div class="c2"></div>
@@ -174,7 +187,7 @@ ob_start();
                                         <?php foreach ($data['menuByCategory']['starter'] as $item): ?>
                                             <div class="col-md-6 mb30">
                                                 <div class="post-menu">
-                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
                                                     <div class="sub-item-service meta">
                                                         <div class="c1"><?= $item['name'][$lang]; ?></div>
                                                         <div class="c2"></div>
@@ -197,7 +210,7 @@ ob_start();
                                         <?php foreach ($data['menuByCategory']['drink'] as $item): ?>
                                             <div class="col-md-6 mb30">
                                                 <div class="post-menu">
-                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
                                                     <div class="sub-item-service meta">
                                                         <div class="c1"><?= $item['name'][$lang]; ?></div>
                                                         <div class="c2"></div>
