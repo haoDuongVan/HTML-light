@@ -109,10 +109,10 @@ ob_start();
                                                 <input type="text" name="person" id="person" class="form-control" placeholder="<?= $data['placeholders']['person']['placeholder']; ?>">
                                             </div>
                                             <div class="col-md-6 mb10">
-                                                <input type="text" name="name" id="name" class="form-control" placeholder="<?= $data['placeholders']['name']['placeholder']; ?>">
+                                                <input type="text" name="name" id="name" class="form-control" placeholder="<?= $data['placeholders']['name']['placeholder']; ?>" autocomplete="name">
                                             </div>
                                             <div class="col-md-6 mb10">
-                                                <input type="text" name="email" id="email" class="form-control" placeholder="<?= $data['placeholders']['email']['placeholder']; ?>">
+                                                <input type="text" name="email" id="email" class="form-control" placeholder="<?= $data['placeholders']['email']['placeholder']; ?>" autocomplete="email">
                                             </div>
                                             <div class="col-md-12 mb10">
                                                 <textarea name="message" id="message" class="form-control" placeholder="<?= $data['placeholders']['message']['placeholder']; ?>"></textarea>

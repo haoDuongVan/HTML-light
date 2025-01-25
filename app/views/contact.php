@@ -109,17 +109,17 @@ ob_start();
                                                             <div class="col-md-12">
                                                                 <div id='name_error' class='error'>Please enter your name.</div>
                                                                 <div>
-                                                                    <input type='text' name='name' id='name' class="form-control" placeholder="<?= $data['placeholders']['name']['placeholder']; ?>">
+                                                                    <input type='text' name='name' id='name' class="form-control" placeholder="<?= $data['placeholders']['name']['placeholder']; ?>" autocomplete="name">
                                                                 </div>
 
                                                                 <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                                                                 <div>
-                                                                    <input type='text' name='email' id='email' class="form-control" placeholder="<?= $data['placeholders']['email']['placeholder']; ?>">
+                                                                    <input type='text' name='email' id='email' class="form-control" placeholder="<?= $data['placeholders']['email']['placeholder']; ?>" autocomplete="email">
                                                                 </div>
 
                                                                 <div id='phone_error' class='error'>Please enter your phone number.</div>
                                                                 <div>
-                                                                    <input type='text' name='phone' id='phone' class="form-control" placeholder="<?= $data['placeholders']['phone']['placeholder']; ?>">
+                                                                    <input type='text' name='phone' id='phone' class="form-control" placeholder="<?= $data['placeholders']['phone']['placeholder']; ?>" autocomplete="phone">
                                                                 </div>
 
                                                                 <div id='message_error' class='error'>Please enter your message.</div>

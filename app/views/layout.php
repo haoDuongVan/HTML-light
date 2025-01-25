@@ -3,24 +3,20 @@
 <html lang="<?= htmlspecialchars($lang, ENT_QUOTES, 'UTF-8') ?>">
 <head>
     <meta charset="UTF-8">
-    <title><?= $data['settings'][1]['value'][$lang]; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Delizus is the most complete restaurantwebsite template">
+    <title><?= $data['settings'][1]['value'][$lang]; ?></title>
+    <!-- <meta name="description" content="Delizus is the most complete restaurantwebsite template">
     <meta name="keywords" content="restaurant,cafe,event.multipurpose,onepage,responsive,minimal,bootstrap,theme">
-    <meta name="author" content="">
-
-    <!--[if lt IE 9]>
-	<script src="<?= BASE_URL; ?>/public/js/html5shiv.js"></script>
-	<![endif]-->
+    <meta name="author" content=""> -->
 
     <!-- CSS Files
     ================================================== -->
-    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/main.min.css ">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/main.min.css" type="text/css">
     <!-- color scheme -->
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/color.css" type="text/css" id="colors">
 
 <?php if (isset($is_contact) && $is_contact): ?>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
 <?php endif; ?>
 
 <?php if (isset($is_home) && $is_home): ?>
@@ -186,7 +182,7 @@
 
     <!-- Javascript Files
     ================================================== -->
-    <script src="<?= BASE_URL; ?>/public/js/main.min.js"   ></script>
+    <script src="<?= BASE_URL; ?>/public/js/main.min.js" defer></script>
     <?php if (isset($custom_js)): ?>
             <?php foreach ($custom_js as $js_file): ?>
                 <script src="<?= $js_file ?>" defer></script>
