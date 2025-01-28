@@ -109,7 +109,9 @@ function initializeTimePicker() {
 // Document Ready
 jQuery(document).ready(function () {
     console.log("Initializing Scripts...");
-    initializeRevolutionSlider();
+    if (jQuery('body').attr('id') === 'homepage') {
+        initializeRevolutionSlider();
+    }
     handleImageError();
     initializeDatePicker();
     initializeTimePicker();

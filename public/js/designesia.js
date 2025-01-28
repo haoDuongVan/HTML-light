@@ -866,8 +866,20 @@ new WOW().init();
 		// isotope
 		jQuery('#gallery').isotope('reLayout');
 
-		// hide preloader after loaded
-		jQuery('#preloader').delay(500).fadeOut(500);
+		// Fallback: Tắt preloader sau một khoảng thời gian cố định (local development)
+		setTimeout(function () {
+			if (jQuery('#preloader').is(':visible')) {
+				jQuery('#preloader').fadeOut(500);
+				console.log("Preloader hidden using fallback");
+			}
+		}, 2000); // Sau 2 giây, nếu preloader vẫn hiện, sẽ tự động ẩn
+	
+		// Tắt preloader khi tất cả tài nguyên đã tải xong (production)
+		jQuery(window).on("load", function () {
+			jQuery('#preloader').fadeOut(500);
+			console.log("Preloader hidden after window load");
+		});
+
 });	
 
 	jQuery(window).scroll(function() {

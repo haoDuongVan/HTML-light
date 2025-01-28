@@ -183,6 +183,7 @@
     <!-- Javascript Files
     ================================================== -->
     <script src="<?= BASE_URL; ?>/public/js/main.min.js" defer></script>
+    <script src="<?= BASE_URL; ?>/public/js/designesia.js?v=<?= time(); ?>" defer></script>
     <?php if (isset($custom_js)): ?>
             <?php foreach ($custom_js as $js_file): ?>
                 <script src="<?= $js_file ?>" defer></script>

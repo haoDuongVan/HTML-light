@@ -107,7 +107,7 @@ ob_start();
                                 <h2><?= $featuresHeading; ?><span class="teaser"><?= $featuresSubheading; ?></span><span class="small-border center"></span></h2>
                         </div>
 
-                            <?php foreach ($data['menuByCategory']['special'] as $item): ?>
+                            <?php foreach ($data['menuByCategory']['set'] as $item): ?>
                                 <div class="col-md-3 col-sm-6 text-center wow fadeInUp" data-wow-delay="<?= $index * 0.3 ?>s">
                                     <div class="menu-item">
                                         <figure class="pic-hover hover-scale mb10">
@@ -164,7 +164,7 @@ ob_start();
 
                                 <div id="tab1" class="tab_single_content">
                                     <div class="row">
-                                        <?php foreach ($data['menuByCategory']['main'] as $item): ?>
+                                        <?php foreach ($data['menuByCategory']['noodle'] as $item): ?>
                                             <div class="col-md-6 mb30">
                                                 <div class="post-menu">
                                                     <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
@@ -179,6 +179,36 @@ ob_start();
                                         <?php endforeach; ?>
 
                                         <div class="clearfix"></div>
+                                        <br><br>
+                                        <?php foreach ($data['menuByCategory']['rice'] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?>  円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+
+                                        <div class="clearfix"></div>
+                                        <br><br>
+                                        <?php foreach ($data['menuByCategory']['bread'] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?>  円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
 
@@ -207,7 +237,7 @@ ob_start();
 
                                 <div id="tab3" class="tab_single_content">
                                     <div class="row">
-                                        <?php foreach ($data['menuByCategory']['drink'] as $item): ?>
+                                        <?php foreach ($data['menuByCategory']['beer'] as $item): ?>
                                             <div class="col-md-6 mb30">
                                                 <div class="post-menu">
                                                     <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
@@ -222,6 +252,54 @@ ob_start();
                                         <?php endforeach; ?>
 
                                         <div class="clearfix"></div>
+                                        <br><br>
+                                        <?php foreach ($data['menuByCategory']['sour'] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?>  円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+
+                                        <div class="clearfix"></div>
+
+                                        <br><br>
+                                        <?php foreach ($data['menuByCategory']['bottle'] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?>  円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+
+                                        <div class="clearfix"></div>
+
+                                        <br><br>
+                                        <?php foreach ($data['menuByCategory']['soft'] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?>  円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
 
 

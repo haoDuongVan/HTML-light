@@ -56,8 +56,8 @@ $jsFiles = [
     'public/js/wow.min.js',
     'public/js/jquery.magnific-popup.min.js',
     'public/js/enquire.min.js',
-    'public/js/jquery.stellar.min.js',
-    'public/js/designesia.js'
+    'public/js/jquery.stellar.min.js'
+    // 'public/js/designesia.js'
 
 ];
 

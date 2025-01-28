@@ -45,45 +45,90 @@ ob_start();
             <?php $categoris = ['main', 'starter', 'drink']; ?>
 
             <?php for ($idx = 0; $idx < count($divId); $idx++): ?>
-                <section id=<?= $divId[$idx] ; ?> class="side-bg" data-bgcolor="<?= $idx % 2 === 1 ? '#f5f5f5' : ''; ?>">
+                <section id="<?= $divId[$idx]; ?>" class="side-bg" data-bgcolor="<?= $idx % 2 === 1 ? '#f0f0f0' : ''; ?>">
                     <div class="<?= $idx % 2 === 0 ? 'col-md-3 image-container' : 'col-md-3 col-md-offset-9 image-container pull-right'; ?>">
                         <div class="background-image"></div>
                     </div>
-    
+
                     <div class="container">
                         <div class="row">
                             <div class="<?= $idx % 2 === 0 ? 'col-md-8 col-md-offset-4' : 'col-md-8'; ?>">
                                 <?php $category = $data['menuCategories'][$idx] ?>
                                 <div class="text-center">
-                                    <h2><?= $category['name'][$lang]; ?><span class="teaser">Fresh and delicious</span><span class="small-border center"></span></h2>
+                                    <h2><?= $category['name'][$lang]; ?>
+                                        <span class="teaser">____________________</span>
+                                        <span class="small-border center"></span>
+                                    </h2>
                                 </div>
                                 
                                 <div class="row">
-                                    <?php foreach ($data['menuByCategory'][$categoris[$idx]] as $item): ?>
-                                        <div class="col-md-6 mb30">
-                                            <div class="post-menu">
-                                                <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
-                                                <div class="sub-item-service meta">
-                                                    <div class="c1"><?= $item['name'][$lang]; ?></div>
-                                                    <div class="c2"></div>
-                                                    <div class="c3"><?= $item['price']; ?>  円</div>
+                                    <?php if ($idx === 0): ?>
+                                        <?php 
+                                        // Lấy dữ liệu từ các danh mục phụ
+                                        $sub_categoris = ['set', 'noodle', 'rice', 'bread'];
+                                        foreach ($sub_categoris as $sub_category): 
+                                            if (isset($data['menuByCategory'][$sub_category])):
+                                                foreach ($data['menuByCategory'][$sub_category] as $item): ?>
+                                                    <div class="col-md-6 mb30">
+                                                        <div class="post-menu">
+                                                            <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
+                                                            <div class="sub-item-service meta">
+                                                                <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                                <div class="c2"></div>
+                                                                <div class="c3"><?= $item['price']; ?> 円</div>
+                                                            </div>
+                                                            <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif;
+                                        endforeach; ?>
+                                    <?php elseif ($idx === 1): ?>
+                                        <?php foreach ($data['menuByCategory'][$categoris[$idx]] as $item): ?>
+                                            <div class="col-md-6 mb30">
+                                                <div class="post-menu">
+                                                    <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
+                                                    <div class="sub-item-service meta">
+                                                        <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                        <div class="c2"></div>
+                                                        <div class="c3"><?= $item['price']; ?> 円</div>
+                                                    </div>
+                                                    <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
                                                 </div>
-                                                <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
                                             </div>
-                                        </div>
-                                    <?php endforeach; ?>
-    
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <?php 
+                                        // Lấy dữ liệu từ các danh mục phụ
+                                        $sub2_categoris = ['beer', 'sour', 'bottle', 'soft'];
+                                        foreach ($sub2_categoris as $sub_category): 
+                                            if (isset($data['menuByCategory'][$sub_category])):
+                                                foreach ($data['menuByCategory'][$sub_category] as $item): ?>
+                                                    <div class="col-md-6 mb30">
+                                                        <div class="post-menu">
+                                                            <img src="<?= BASE_URL . $item['image']; ?>" class="img-responsive" alt="" loading="lazy">
+                                                            <div class="sub-item-service meta">
+                                                                <div class="c1"><?= $item['name'][$lang]; ?></div>
+                                                                <div class="c2"></div>
+                                                                <div class="c3"><?= $item['price']; ?> 円</div>
+                                                            </div>
+                                                            <div class="service-text meta-content"><?= $item['description'][$lang]; ?></div>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif;
+                                        endforeach; ?>
+                                    <?php endif; ?>
+
                                     <div class="clearfix"></div>
                                 </div>
-    
                             </div>
-    
-    
                         </div>
                     </div>
                 </section>
                 <!-- section close -->
             <?php endfor; ?>
+
         </div>
 <?php
 $content = ob_get_clean();
