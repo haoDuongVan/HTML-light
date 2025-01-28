@@ -4393,7 +4393,7 @@ display:table;
 	@media (min-width: 768px) {
 		.row-fuild .col-md-6 {
 			flex: 1 1 50%; /* Trên màn hình lớn hơn, mỗi khối chiếm 50% chiều rộng */
-			max-width: 50%;
+			max-width: 100%;
 		}
 	}
 	
@@ -4864,6 +4864,9 @@ display:table;
 	width:100%;
 	}
 	
+	.col-md-6 > div[data-bgcolor="#111111"] {
+        padding: 26px; /* Áp dụng padding 26px cho màn hình nhỏ */
+    }
 	
 	}
 
@@ -4871,14 +4874,10 @@ display:table;
 	/* -------------------------------------------------- 
 	custom for 320px & 480px 
 	/* -------------------------------------------------- */
-	@media only screen and (max-width: 767px) {
+	@media only screen and (max-width: 768px) {
 	#section-book-form [data-bgcolor="#111111"] {
 		padding: 20px;
 	}
-
-	.col-md-6 > div[data-bgcolor="#111111"] {
-        padding: 26px; /* Áp dụng padding 30px cho màn hình nhỏ */
-    }
 
 	.pricing-2-col .pricing-box, .pricing-3-col .pricing-box, .pricing-4-col .pricing-box, .pricing-5-col .pricing-box {
 	width: 100%;

@@ -52,9 +52,9 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <div class="col"><span class="id-color"><i class="fa fa-map-marker"></i></span>Collins Street West, Victoria 8007 Australia </div>
-                                    <div class="col"><span class="id-color"><i class="fa fa-clock-o"></i></span>Monday - Friday 08:00-16:00</div>
-                                    <div class="col"><span class="id-color"><i class="fa fa-phone"></i></span>1800.899.900</div>
+                                    <div class="col"><span class="id-color"><i class="fa fa-map-marker"></i></span>xxxx-xxxx-xxxx-  Tokyo</div>
+                                    <div class="col"><span class="id-color"><i class="fa fa-clock-o"></i></span>Monday - Friday 08:00-23:00</div>
+                                    <div class="col"><span class="id-color"><i class="fa fa-phone"></i></span>070-xxxx-xxxx</div>
                                     <div class="col">
                                         <div id="lang-selector" class="dropdown">
                                             <?php
