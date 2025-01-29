@@ -1,3 +1,4 @@
 /vendor/
 .env
 /unused/
+/public/images/background/old/

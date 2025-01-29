@@ -2072,6 +2072,8 @@ footer {
 .sub-item-service .c1,.c2,.c3{
     display:table-cell;
     width:auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
  }
  
   .sub-item-service .c1{
@@ -4301,9 +4303,33 @@ display:table;
 	border:none !important;
 }
 
+/* .tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+	max-width: 360px ;
+} */
+
 /* ================================================== */
 /* R E S P O N S I V E */
 /* ================================================== */
+	@media (min-width: 1282px) and (max-width: 1300px) {
+	.c1 {
+		max-width: 210px;
+		}
+
+	.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+		max-width: 330px ;
+	}
+	}
+
+	@media(min-width:980px) and (max-width: 1281px) {
+
+	.c1 {
+		max-width: 220px;
+	}
+	.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+		max-width: 330px ;
+	}
+	
+	}
 	@media(min-width:980px) and (max-width: 1199px) {
 	
 	header #mainmenu a{
@@ -4313,6 +4339,14 @@ display:table;
 	
 	#mainmenu li a:after{
 	margin-left:15px;
+	}
+
+
+	.c1 {
+		max-width: 142px;
+	}
+	.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+		max-width: 250px ;
 	}
 	
 	}
@@ -4957,6 +4991,9 @@ display:table;
 	max-width:200px;
 	height:auto;
 	}
+	.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+		max-width: 280px ;
+	}
 	}
 	
 	
@@ -4983,4 +5020,55 @@ display:table;
 	max-width:200px;
 	height:auto;
 	}
+
+	.c1 {
+		max-width: 240px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+		max-width: 166px ;
+	}
+}
+
+@media (min-width: 420px) and (max-width: 440px) {
+	.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+		max-width: 190px;
+	}
+}
+
+@media only screen and (max-width: 392px) {
+	.c1 {
+		max-width: 210px;
+	}
+	.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+		max-width: 150px;
+	}
+}
+
+	@media only screen and (max-width: 376px) {
+		.c1 {
+			max-width: 200px;
+		}
+		.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+			max-width: 130px;
+		}
+	}
+
+	@media only screen and (max-width: 362px) {
+		.c1 {
+			max-width: 180px;
+		}
+		.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+			max-width: 120px ;
+		}
+	}
+
+	@media only screen and (max-width: 346px) {
+		.c1 {
+			max-width: 160px;
+		}
+		.tab_single_content .col-md-6 .post-menu .sub-item-service .c1 {
+			max-width: 100px ;
+		}
 	}
