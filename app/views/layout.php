@@ -9,6 +9,11 @@
     <meta name="keywords" content="restaurant,cafe,event.multipurpose,onepage,responsive,minimal,bootstrap,theme">
     <meta name="author" content=""> -->
 
+    <!-- Favicon PNG chung -->
+    <link rel="icon" href="<?= BASE_URL; ?>/public/images/favicon.png" type="image/png">
+
+    <!-- Favicon cho Apple Devices (iPhone, iPad) -->
+    <link rel="apple-touch-icon" href="<?= BASE_URL; ?>/public/images/favicon-2.png">
     <!-- CSS Files
     ================================================== -->
     <link rel="stylesheet" href="<?= BASE_URL; ?>/public/css/main.min.css" type="text/css">
@@ -52,8 +57,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <div class="col"><span class="id-color"><i class="fa fa-map-marker"></i></span>xxxx-xxxx-xxxx-  Tokyo</div>
-                                    <div class="col"><span class="id-color"><i class="fa fa-clock-o"></i></span>Monday - Friday 08:00-23:00</div>
+                                    <div class="col"><span class="id-color"><i class="fa fa-map-marker"></i></span>174-0071 東京都板橋区常盤台4丁目21番6号アツザワビル1階</div>
+                                    <div class="col"><span class="id-color"><i class="fa fa-clock-o"></i></span>ランチ:11時-15時 & ディナー:17時-22時</div>
                                     <div class="col"><span class="id-color"><i class="fa fa-phone"></i></span>070-xxxx-xxxx</div>
                                     <div class="col">
                                         <div id="lang-selector" class="dropdown">
@@ -111,7 +116,7 @@
                         <div id="logo">
                             <a href="<?= BASE_URL; ?>/">
                                 <img class="logo" src="<?= BASE_URL; ?>/public/images/logo.png" alt="">
-                                <img class="logo-2" src="<?= BASE_URL; ?>/public/images/logo-2.png" alt="">
+                                <img class="logo-2" src="<?= BASE_URL; ?>/public/images/logo.png" alt="">
                             </a>
                         </div>
                         <!-- logo close -->

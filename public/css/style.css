@@ -200,10 +200,17 @@ overflow:visible;
 	}
 	header.header-solid.header-light #logo .logo{
 	position:absolute;
+
 	}
 	header.header-solid.header-light #logo .logo-2{
 		display:inline-block;
 	}
+
+	.logo, .logo-2{
+		width: 120px;
+		height: auto;
+	}
+
 	header nav {
 	float:right;
 	}
