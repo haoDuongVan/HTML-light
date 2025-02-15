@@ -16,7 +16,7 @@ function init() {
         if (!mapInitialized) {
             // Thiết lập bản đồ và vị trí ban đầu
             var myLatlng = [35.763769586167456, 139.6784879490752]; // Thay tọa độ tại đây nếu cần
-            map = L.map('map').setView(myLatlng, 13); // 13 là mức zoom ban đầu
+            map = L.map('map').setView(myLatlng, 10); // 13 là mức zoom ban đầu
 
             // Gắn layer bản đồ OpenStreetMap
             // Define base layers
@@ -42,8 +42,8 @@ function init() {
             // Thêm marker trên bản đồ
             L.marker(myLatlng).addTo(map)
                 .bindPopup(`
-                    <b>Restaurant Name</b><br>
-                    123 Main Street, City.<br>
+                    <b>Bánh Mì Tokyo-ベトナム料理専門店</b><br>
+                    174-0071 東京都板橋区常盤台4丁目21番6号アツザワビル1階<br>
                     <i>Phone: 123-456-7890</i>
                     
                 `) // Popup khi nhấp vào marker

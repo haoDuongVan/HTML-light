@@ -4,8 +4,7 @@ $body_id = 'homepage'; // Gán id riêng cho <body>
 $header_class = ''; // Không cần class cho <header> ở trang Home
 $custom_css = ['public/css/datepicker.css',
                'public/css/bootstrap-timepicker.min.css',
-                'public/fonts/et-line-font/style.css',
-                'public/revolution/css/settings.css'];
+                'public/fonts/et-line-font/style.css'];
 $custom_js = ['public/js/validation-reservation.js',
                 'public/js/bootstrap-datepicker.js',
                 'public/js/bootstrap-timepicker.min.js',
@@ -34,10 +33,21 @@ ob_start();
                 <div id="revolution-slider">
                 <p class="fallback">Không thể tải slider. Vui lòng kiểm tra kết nối mạng của bạn.</p>
                     <ul>
+                        <?php $firstSlide = true; ?>
                         <?php foreach ($data['sliders'] as $slider): ?>
                             <li data-transition="fade" data-slotamount="10" data-masterspeed="default" data-thumb="">
                                 <!--  BACKGROUND IMAGE -->
-                                <img src="<?= BASE_URL . $slider['image']; ?>" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" loading="lazy"/>
+                                <img src="<?= BASE_URL . $slider['image']; ?>"
+                                    alt=""
+                                    data-bgposition="center center"
+                                    data-bgfit="cover"
+                                    data-bgrepeat="no-repeat"
+                                    data-bgparallax="10"
+                                    width="1920"
+                                    height="1080"
+                                    <?= $firstSlide ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' ?>
+                                />
+                                <?php $firstSlide = false; ?>
 
                                 <div class="tp-caption very-big-white"
                                     data-x="center"
@@ -334,7 +344,7 @@ ob_start();
                             <h2><?= $formHeading; ?><span class="teaser center"><?= $formSubheading; ?></span><span class="small-border center"></span></h2>
 
                             <div class="row">
-                                <form name="contactForm" id="contact_form" class="form-dark" method="post" action="index.php?url=HomeController/bookTable">
+                                <form name="contactForm" id="contact_form" class="form-dark" method="post" action="/bookTable">
                                     <div class="col-md-6 mb10">
                                         <input type="text" name="date" id="date" class="form-control" placeholder="<?= $data['placeholders']['date']['placeholder']; ?>">
                                     </div>

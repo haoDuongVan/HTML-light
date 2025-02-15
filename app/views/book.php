@@ -5,7 +5,7 @@ $header_class = 'header-solid header-light'; // Class riêng cho <header>
 $custom_css = ['public/css/datepicker.css',
                'public/css/bootstrap-timepicker.min.css',
                 'public/fonts/elegant_font/HTML_CSS/lte-ie7.js'];
-                $custom_js = ['public/js/validation-reservation.js',
+$custom_js = ['public/js/validation-reservation.js',
                 'public/js/bootstrap-datepicker.js',
                 'public/js/bootstrap-timepicker.min.js',
                 'public/js/main.js',];
@@ -95,7 +95,7 @@ ob_start();
                             <div class="col-md-6">
                                 <div data-bgcolor="#111111" class="padding60 text-center text-light shadow-soft">
                                     <div class="row">
-                                        <form name="contactForm" id="contact_form" class="form-dark" method="post" action="index.php?url=HomeController/bookTable">
+                                        <form name="contactForm" id="contact_form" class="form-dark" method="post" action="/bookTable">
                                             <div class="col-md-6 mb10">
                                                 <input type="text" name="date" id="date" class="form-control" placeholder="<?= $data['placeholders']['date']['placeholder']; ?>">
                                             </div>

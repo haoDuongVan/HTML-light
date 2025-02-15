@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $data['settings'][1]['value'][$lang]; ?></title>
-    <!-- <meta name="description" content="Delizus is the most complete restaurantwebsite template">
-    <meta name="keywords" content="restaurant,cafe,event.multipurpose,onepage,responsive,minimal,bootstrap,theme">
-    <meta name="author" content=""> -->
+    <meta name="description" content="">
+    <meta name="keywords" content="restaurant,cafe,banh mi,tokyo,pho,banhmi tokyo,vietnam bread, ">
+    <meta name="author" content="">
 
     <!-- Favicon PNG chung -->
     <link rel="icon" href="<?= BASE_URL; ?>/public/images/favicon.png" type="image/png">
@@ -96,7 +96,7 @@
                                     <div class="col social">
                                         <a href="#"><i class="fa fa-facebook"></i></a>
                                         <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-rss"></i></a>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
                                         <a href="#"><i class="fa fa-google-plus"></i></a>
                                         <a href="#"><i class="fa fa-envelope-o"></i></a>
                                     </div>
@@ -187,7 +187,7 @@
 
     <!-- Javascript Files
     ================================================== -->
-    <script src="<?= BASE_URL; ?>/public/js/main.min.js" defer></script>
+    <script src="<?= BASE_URL; ?>/public/js/main.min.js?v=<?php echo time(); ?>" defer></script>
     <script src="<?= BASE_URL; ?>/public/js/designesia.js?v=<?= time(); ?>" defer></script>
     <?php if (isset($custom_js)): ?>
             <?php foreach ($custom_js as $js_file): ?>

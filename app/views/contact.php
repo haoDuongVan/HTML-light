@@ -104,7 +104,7 @@ ob_start();
                                             <div class="row">
                                                 <div class="col-md-12">
 
-                                                    <form name="contactForm" id='contact_form' method="post" action="index.php?url=ContactController/sendEmail">
+                                                    <form name="contactForm" id='contact_form' method="post" action="/sendEmail">
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div id='name_error' class='error'>Please enter your name.</div>
