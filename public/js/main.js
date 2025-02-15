@@ -30,7 +30,6 @@ function initializeRevolutionSlider() {
   // Hiển thị fallback nếu slider không tải được
   setTimeout(function () {
     if (!slider.hasClass("tp-simpleresponsive")) {
-      console.error("Slider không thể tải.");
       jQuery("#revolution-slider .fallback").show();
     }
   }, 1000); // Sau 3 giây nếu slider không sẵn sàng
@@ -39,7 +38,6 @@ function initializeRevolutionSlider() {
 // Fallback cho ảnh lỗi
 function handleImageError() {
   jQuery("#revolution-slider img").on("error", function () {
-    console.error("Không thể tải ảnh:", jQuery(this).attr("src"));
     jQuery(this).attr("src", "/public/images-slider/slider1-light.webp"); // Thay bằng ảnh mặc định
   });
 }

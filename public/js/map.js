@@ -16,7 +16,7 @@ function init() {
         if (!mapInitialized) {
             // Thiết lập bản đồ và vị trí ban đầu
             var myLatlng = [35.763769586167456, 139.6784879490752]; // Thay tọa độ tại đây nếu cần
-            map = L.map('map').setView(myLatlng, 10); // 13 là mức zoom ban đầu
+            map = L.map('map').setView(myLatlng, 15); // 15 là mức zoom ban đầu
 
             // Gắn layer bản đồ OpenStreetMap
             // Define base layers

@@ -236,7 +236,7 @@ header.smaller {
   background: rgba(50, 50, 50, 0.95);
 }
 header.smaller #logo {
-  line-height:48px;
+	line-height:48px;
 }
 header.smaller.scroll-light {
   background: #fff;

@@ -114,13 +114,9 @@ $(document).ready(function () {
         }
       ).fail(function (xhr, status, error) {
         console.error(
-          "AJAX error:",
-          error,
-          "Status:",
-          status,
-          "Response:",
-          xhr.responseText
-        );
+          "AJAX error:", error,
+          "Status:", status,
+          "Response:", xhr.responseText);
         $("#send_message").val(originalText).removeAttr("disabled");
       });
     }
